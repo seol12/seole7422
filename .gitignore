@@ -1,0 +1,14 @@
+# next.js build output
+.next
+
+# Dependency directories
+/front/node_modules/
+/back/node_modules/
+jspm_packages/
+
+# dotenv 
+.env
+
+# Serverless directories
+.serverless
+/front/build/
