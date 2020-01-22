@@ -3,7 +3,6 @@ import {Form,Avatar} from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 import styled from 'styled-components';
-import {backUrl} from '../config/config';
 
 const Avatadiv = styled.div`
 
@@ -225,7 +224,7 @@ const onSubmitForm = useCallback((e) => {
       <Removediv>
       {imagePaths.map((v, i) => (
           <div key={v} style={{ display: 'inline-block' }}>
-            <img src={`${backUrl}/${v}`} style={{ width: '200px' ,margin:'10px' }} alt={v} />
+            <img src={v} style={{ width: '200px' ,margin:'10px' }} alt={v} />
             <Removedav>
               <RemoveBtn onClick={onRemoveImage(i)}>제거</RemoveBtn>
             </Removedav>

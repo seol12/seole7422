@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_MAIN_POSTS_REQUEST, LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from '../reducers/post';
 import Helmet from 'react-helmet';
-import {backUrl} from '../config/config';
+
 
 
 const Post = ({post}) => {
@@ -27,7 +27,7 @@ const dispatch = useDispatch();
                     content: singlePost.content,
                 },{
                     property: 'og:image',
-                    content: singlePost.Images[0] && `http://api.seolcat.com/${singlePost.Images[0].src}`,
+                    content: singlePost.Images[0] ? singlePost.Images[0].src : 'http://seolcat.com/favicon.ico',
                 },{
                     property: 'og:url',
                     content: `http://seolcat.com/post/${id}`,
@@ -37,7 +37,7 @@ const dispatch = useDispatch();
             />
             <div>{singlePost.content}</div>
             <div>{singlePost.User.nickname}</div>
-            <div>{singlePost.Images[0] && <img src={`${backUrl}/${singlePost.Images[0].src}`}/>}</div>
+            <div>{singlePost.Images[0] && <img src={singlePost.Images[0].src}/>}</div>
         </>
     )
 }
