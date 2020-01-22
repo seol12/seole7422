@@ -3,7 +3,7 @@ import {Card, Icon, Avatar, List, Comment, Tooltip} from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import {  LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST,REMOVE_COMMENT_REQUEST } from '../reducers/post';
 import Link from 'next/link';
-import PostImages from '../components/Postimages';
+import PostImages from '../components/PostImages';
 import PostCardContent from '../components/PostCardContent';
 import styled from 'styled-components';
 import moment from 'moment';
