@@ -12,3 +12,6 @@ jspm_packages/
 # Serverless directories
 .serverless
 /front/build/
+
+# pem
+Catseole.pem
