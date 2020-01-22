@@ -52,7 +52,7 @@ const Didhddl = ({Component,store,pageProps}) => {
 
           },{
             property: 'og:image',
-            content: 'http://localhost:3060/favicon.ico',
+            content: 'http://seolcat.com/favicon.ico',
             
           }]}
           link={[{
