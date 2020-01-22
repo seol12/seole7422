@@ -4,6 +4,8 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const dotenv = require('dotenv');
+const hpp = require('hpp');
+const helmet = require('helmet');
 const passport = require('passport');
 const passportConfig = require('./passport');
 const db = require('./models');
@@ -12,17 +14,32 @@ const postAPIRouter = require('./routes/post');
 const postsAPIRouter = require('./routes/posts');
 const hashtagAPIRouter = require('./routes/hashtag');
 
+
+
+const prod = process.env.NODE_ENV === 'production';
 dotenv.config();
 const app = express();
 db.sequelize.sync();
 passportConfig();
 
-app.use(morgan('dev'));
+if(prod){
+  app.use(hpp());
+  app.use(helmet());
+  app.use(morgan('combined'));
+  app.use(cors({
+    origin: 'http://seolcat.com',
+    credentials: true,
+  }))
+}else{
+  app.use(morgan('dev'));
+  app.use(cors({
+    origin: true,
+    credentials: true,
+  }));
+
+}
+
 app.use('/', express.static('uploads'));
-app.use(cors({
-  origin: true,
-  credentials: true,
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -33,6 +50,7 @@ app.use(expressSession({
   cookie: {
     httpOnly: true,
     secure: false, 
+    domain: prod && '.seolcat.com',
   },
   name: 'didhddl',
 }));
@@ -43,6 +61,6 @@ app.use('/api/post', postAPIRouter);
 app.use('/api/posts', postsAPIRouter);
 app.use('/api/hashtag', hashtagAPIRouter);
 
-app.listen(process.env.NODE_ENV === 'production' ?process.env.PORT :3065, () => {
+app.listen(prod ? process.env.PORT : 3065, () => {
   console.log(`server is running on http://localhost:3065${process.env.PORT}`);
 });
