@@ -31,7 +31,6 @@ router.post('/', async (req, res, next) => {
     return res.status(200).json(newUser);
   } catch (e) {
     console.error(e);
-    // 에러 처리를 여기서
     return next(e);
   }
 });
@@ -133,7 +132,7 @@ router.get('/:id/followers', isLoggedIn, async (req, res, next) => {
   try {
     const user = await db.User.findOne({
       where: { id: parseInt(req.params.id, 10) || (req.user && req.user.id) || 0 },
-    }); // req.params.id가 문자열 '0'
+    });
     const followers = await user.getFollowers({
       attributes: ['id', 'nickname'],
       limit: parseInt(req.query.limit, 10),

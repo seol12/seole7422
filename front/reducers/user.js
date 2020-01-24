@@ -53,10 +53,6 @@ export const REMOVE_FOLLOWER_REQUEST = 'REMOVE_FOLLOWER_REQUEST';
 export const REMOVE_FOLLOWER_SUCCESS = 'REMOVE_FOLLOWER_SUCCESS';
 export const REMOVE_FOLLOWER_FAILURE = 'REMOVE_FOLLOWER_FAILURE';
 
-export const EDIT_NICKNAME_REQUEST = 'EDIT_NICKNAME_REQUEST';
-export const EDIT_NICKNAME_SUCCESS = 'EDIT_NICKNAME_SUCCESS';
-export const EDIT_NICKNAME_FAILURE = 'EDIT_NICKNAME_FAILURE';
-
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
 
@@ -193,22 +189,7 @@ export default (state = initialState, action) => {
       }
       case REMOVE_FOLLOWER_FAILURE: {
         break;
-      }
-      case EDIT_NICKNAME_REQUEST: {
-        draft.isEditingNickname = true;
-        draft.editNicknameErrorReason = '';
-        break;
-      }
-      case EDIT_NICKNAME_SUCCESS: {
-        draft.isEditingNickname = false;
-        draft.me.nickname = action.data;
-        break;
-      }
-      case EDIT_NICKNAME_FAILURE: {
-        draft.isEditingNickname = false;
-        draft.editNicknameErrorReason = action.error;
-        break;
-      }
+      }  
       default: {
         break;
       }

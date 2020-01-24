@@ -46,6 +46,10 @@ const SexyInput = styled(Input)`
   height: 44px;
   padding: 10px;
   box-shadow: 1px 2px 3px 1px gray;
+  @media only screen and (max-width: 400px) {
+      width: 360px;
+     
+  }
 
 `;
 
@@ -89,6 +93,14 @@ const Guidediv = styled.div`
       font-weight: bold;
       font-size: 14px;
     }
+  @media only screen and (max-width: 400px) {
+    width: 280px;
+     
+  }
+  @media only screen and (max-width: 420px) {
+    width: 280px;
+    
+  }
 
 `;
 

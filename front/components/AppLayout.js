@@ -44,7 +44,19 @@ const {me} =useSelector(state=>state.user);
       @media only screen and (max-width: 600px) {
       margin-left: 0 auto;
       margin-right: 40px ;
+      
       }
+      @media only screen and (max-width: 400px) {
+      margin-left: 4px;
+      margin-right: 0px ;
+      
+      }
+      @media only screen and (max-width: 420px) {
+      margin-left: 4px;
+      margin-right: 0px ;
+      
+      }
+
   `;
 
   const MainCat = styled(Row)`
@@ -56,6 +68,18 @@ const {me} =useSelector(state=>state.user);
     order:1;
     flex-grow: 11;
     flex-shrink: 2;
+    @media only screen and (max-width: 400px) {
+      width: 200px;
+      margin-left: 0 auto;
+      flex-grow: 9;
+    
+    }
+    @media only screen and (max-width: 420px) {
+      width: 200px;
+      margin-left: 0 auto;
+      flex-grow: 9;
+    
+    }
   
   `;
 

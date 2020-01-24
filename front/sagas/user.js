@@ -1,31 +1,14 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import {
-  EDIT_NICKNAME_FAILURE, EDIT_NICKNAME_REQUEST,
-  EDIT_NICKNAME_SUCCESS,
-  FOLLOW_USER_FAILURE,
-  FOLLOW_USER_REQUEST,
-  FOLLOW_USER_SUCCESS,
-  LOAD_FOLLOWERS_FAILURE,
-  LOAD_FOLLOWERS_REQUEST,
-  LOAD_FOLLOWERS_SUCCESS,
-  LOAD_FOLLOWINGS_FAILURE, LOAD_FOLLOWINGS_REQUEST,
-  LOAD_FOLLOWINGS_SUCCESS,
-  LOAD_USER_FAILURE,
-  LOAD_USER_REQUEST,
-  LOAD_USER_SUCCESS,
-  LOG_IN_FAILURE,
-  LOG_IN_REQUEST,
-  LOG_IN_SUCCESS,
-  LOG_OUT_FAILURE,
-  LOG_OUT_REQUEST,
-  LOG_OUT_SUCCESS, REMOVE_FOLLOWER_FAILURE, REMOVE_FOLLOWER_REQUEST, REMOVE_FOLLOWER_SUCCESS,
-  SIGN_UP_FAILURE,
-  SIGN_UP_REQUEST,
-  SIGN_UP_SUCCESS,
-  UNFOLLOW_USER_FAILURE,
-  UNFOLLOW_USER_REQUEST,
-  UNFOLLOW_USER_SUCCESS,
+import { FOLLOW_USER_FAILURE, FOLLOW_USER_REQUEST, FOLLOW_USER_SUCCESS,
+  LOAD_FOLLOWERS_FAILURE, LOAD_FOLLOWERS_REQUEST, LOAD_FOLLOWERS_SUCCESS,
+  LOAD_FOLLOWINGS_FAILURE, LOAD_FOLLOWINGS_REQUEST, LOAD_FOLLOWINGS_SUCCESS,
+  LOAD_USER_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS,
+  LOG_IN_FAILURE, LOG_IN_REQUEST, LOG_IN_SUCCESS,
+  LOG_OUT_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, 
+  REMOVE_FOLLOWER_FAILURE, REMOVE_FOLLOWER_REQUEST, REMOVE_FOLLOWER_SUCCESS,
+  SIGN_UP_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS,
+  UNFOLLOW_USER_FAILURE, UNFOLLOW_USER_REQUEST, UNFOLLOW_USER_SUCCESS,
 } from '../reducers/user';
 
 function logInAPI(loginData) {
@@ -259,31 +242,6 @@ function* watchRemoveFollower() {
   yield takeEvery(REMOVE_FOLLOWER_REQUEST, removeFollower);
 }
 
-function editNicknameAPI(nickname) {
-  return axios.patch('/user/nickname', { nickname }, {
-    withCredentials: true,
-  });
-}
-
-function* editNickname(action) {
-  try {
-    const result = yield call(editNicknameAPI, action.data);
-    yield put({ 
-      type: EDIT_NICKNAME_SUCCESS,
-      data: result.data,
-    });
-  } catch (e) { 
-    console.error(e);
-    yield put({
-      type: EDIT_NICKNAME_FAILURE,
-      error: e,
-    });
-  }
-}
-
-function* watchEditNickname() {
-  yield takeEvery(EDIT_NICKNAME_REQUEST, editNickname);
-}
 
 export default function* userSaga() {
   yield all([
@@ -296,6 +254,5 @@ export default function* userSaga() {
     fork(watchLoadFollowers),
     fork(watchLoadFollowings),
     fork(watchRemoveFollower),
-    fork(watchEditNickname),
   ]);
 }
