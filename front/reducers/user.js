@@ -11,8 +11,6 @@ export const initialState = {
   followingList: [], 
   followerList: [], 
   userInfo: null, 
-  isEditingNickname: false, 
-  editNicknameErrorReason: '', 
   hasMoreFollower: false,
   hasMoreFollowing: false,
 };
@@ -41,13 +39,6 @@ export const LOAD_FOLLOWINGS_REQUEST = 'LOAD_FOLLOWINGS_REQUEST';
 export const LOAD_FOLLOWINGS_SUCCESS = 'LOAD_FOLLOWINGS_SUCCESS';
 export const LOAD_FOLLOWINGS_FAILURE = 'LOAD_FOLLOWINGS_FAILURE';
 
-export const FOLLOW_USER_REQUEST = 'FOLLOW_USER_REQUEST';
-export const FOLLOW_USER_SUCCESS = 'FOLLOW_USER_SUCCESS';
-export const FOLLOW_USER_FAILURE = 'FOLLOW_USER_FAILURE';
-
-export const UNFOLLOW_USER_REQUEST = 'UNFOLLOW_USER_REQUEST';
-export const UNFOLLOW_USER_SUCCESS = 'UNFOLLOW_USER_SUCCESS';
-export const UNFOLLOW_USER_FAILURE = 'UNFOLLOW_USER_FAILURE';
 
 export const REMOVE_FOLLOWER_REQUEST = 'REMOVE_FOLLOWER_REQUEST';
 export const REMOVE_FOLLOWER_SUCCESS = 'REMOVE_FOLLOWER_SUCCESS';
@@ -113,29 +104,6 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_USER_FAILURE: {
-        break;
-      }
-      case FOLLOW_USER_REQUEST: {
-        break;
-      }
-      case FOLLOW_USER_SUCCESS: {
-        draft.me.Followings.unshift({ id: action.data });
-        break;
-      }
-      case FOLLOW_USER_FAILURE: {
-        break;
-      }
-      case UNFOLLOW_USER_REQUEST: {
-        break;
-      }
-      case UNFOLLOW_USER_SUCCESS: {
-        const index = draft.me.Followings.findIndex(v => v.id === action.data);
-        draft.me.Followings.splice(index, 1);
-        const index2 = draft.followingList.findIndex(v => v.id === action.data);
-        draft.followingList.splice(index2, 1);
-        break;
-      }
-      case UNFOLLOW_USER_FAILURE: {
         break;
       }
       case ADD_POST_TO_ME: {

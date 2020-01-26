@@ -84,10 +84,11 @@ const Margindiv = styled.div`
 `;
 
 const Linediv = styled.div`
-width: 400px;
-margin-top: 30px;
-border-bottom: 1px solid gray;
-box-shadow: 0px 1px 1px 0px gray;
+
+    width: 400px;
+    margin-top: 30px;
+    border-bottom: 1px solid gray;
+    box-shadow: 0px 1px 1px 0px gray;
 
 `;
 

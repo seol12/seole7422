@@ -125,38 +125,30 @@ const {me} =useSelector(state=>state.user);
   
 
     return(
-        <div>
-
-      <Headers>
-        <HeaderNv >
-          <MainCat key="home"><Link href="/"><StyleshA>Seol Cat</StyleshA></Link></MainCat>        
-          {me
-          ?<LoginCat key="login"><StyleshB onClick={onLogout}>Log Out</StyleshB></LoginCat> 
-          :<LoginCat key="login"><Link href="/LoginForm"><StyleshB>Login</StyleshB></Link></LoginCat>}
-          <SignupCat key="signup"><Link href="/signup"><StyleshB>SignUp</StyleshB></Link></SignupCat>  
-
-        </HeaderNv>
-
-
-      </Headers>
+      <div>
+        <Headers>
+          <HeaderNv >
+            <MainCat key="home"><Link href="/"><StyleshA>Seol Cat</StyleshA></Link></MainCat>        
+            {me
+            ?<LoginCat key="login"><StyleshB onClick={onLogout}>Log Out</StyleshB></LoginCat> 
+            :<LoginCat key="login"><Link href="/LoginForm"><StyleshB>Login</StyleshB></Link></LoginCat>}
+            <SignupCat key="signup"><Link href="/signup"><StyleshB>SignUp</StyleshB></Link></SignupCat>  
+          </HeaderNv>
+        </Headers>
         
 
         
-            <Row gutter={8}>
-                <Col xs={24} md={6}>
-      
-                </Col>
-            
-                <Col xs={24} md={12}>
-                {children}
-                </Col>
-            
-                <Col xs={24} md={6}>
-
-                </Col>
-            </Row>
+        <Row gutter={8}>
+          <Col xs={24} md={6}>
+          </Col>       
+          <Col xs={24} md={12}>
+            {children}
+          </Col>
+          <Col xs={24} md={6}>
+          </Col>
+        </Row>
          
-        </div>
+      </div>
     );
 }
 

@@ -1,6 +1,6 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-import { FOLLOW_USER_FAILURE, FOLLOW_USER_REQUEST, FOLLOW_USER_SUCCESS,
+import { 
   LOAD_FOLLOWERS_FAILURE, LOAD_FOLLOWERS_REQUEST, LOAD_FOLLOWERS_SUCCESS,
   LOAD_FOLLOWINGS_FAILURE, LOAD_FOLLOWINGS_REQUEST, LOAD_FOLLOWINGS_SUCCESS,
   LOAD_USER_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS,
@@ -8,7 +8,6 @@ import { FOLLOW_USER_FAILURE, FOLLOW_USER_REQUEST, FOLLOW_USER_SUCCESS,
   LOG_OUT_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, 
   REMOVE_FOLLOWER_FAILURE, REMOVE_FOLLOWER_REQUEST, REMOVE_FOLLOWER_SUCCESS,
   SIGN_UP_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS,
-  UNFOLLOW_USER_FAILURE, UNFOLLOW_USER_REQUEST, UNFOLLOW_USER_SUCCESS,
 } from '../reducers/user';
 
 function logInAPI(loginData) {
@@ -112,58 +111,6 @@ function* watchLoadUser() {
   yield takeEvery(LOAD_USER_REQUEST, loadUser);
 }
 
-function followAPI(userId) {
-  return axios.post(`/user/${userId}/follow`, {}, {
-    withCredentials: true,
-  });
-}
-
-function* follow(action) {
-  try {
-    const result = yield call(followAPI, action.data);
-    yield put({ 
-      type: FOLLOW_USER_SUCCESS,
-      data: result.data,
-    });
-  } catch (e) { 
-    console.error(e);
-    yield put({
-      type: FOLLOW_USER_FAILURE,
-      error: e,
-    });
-  }
-}
-
-function* watchFollow() {
-  yield takeEvery(FOLLOW_USER_REQUEST, follow);
-}
-
-function unfollowAPI(userId) {
-  return axios.delete(`/user/${userId}/follow`, {
-    withCredentials: true,
-  });
-}
-
-function* unfollow(action) {
-  try {
-    const result = yield call(unfollowAPI, action.data);
-    yield put({ 
-      type: UNFOLLOW_USER_SUCCESS,
-      data: result.data,
-    });
-  } catch (e) { 
-    console.error(e);
-    yield put({
-      type: UNFOLLOW_USER_FAILURE,
-      error: e,
-    });
-  }
-}
-
-function* watchUnfollow() {
-  yield takeEvery(UNFOLLOW_USER_REQUEST, unfollow);
-}
-
 function loadFollowersAPI(userId, offset = 0, limit = 3) {
   return axios.get(`/user/${userId || 0}/followers?offset=${offset}&limit=${limit}`, {
     withCredentials: true,
@@ -249,8 +196,6 @@ export default function* userSaga() {
     fork(watchLogOut),
     fork(watchLoadUser),
     fork(watchSignUp),
-    fork(watchFollow),
-    fork(watchUnfollow),
     fork(watchLoadFollowers),
     fork(watchLoadFollowings),
     fork(watchRemoveFollower),
