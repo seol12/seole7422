@@ -31,7 +31,7 @@ const Textinput = styled.textarea`
 
 const BlackBtn = styled.button`
 
-    width: 60px;
+    width: 64px;
     height: 40px;
     background-color: #20232a;
     color: white;
@@ -61,6 +61,10 @@ const CommentForm = ({post})=> {
         if(!me) {
             return alert('로그인 후 사용 가능합니다')
         }
+        if(!commentText || !commentText.trim()){
+            return alert('내용을 기입해주세요.');
+        }
+       
         dispatch({
             type:ADD_COMMENT_REQUEST,
             data:{

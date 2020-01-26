@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_MAIN_POSTS_REQUEST, LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from '../reducers/post';
 import Helmet from 'react-helmet';
+import PostCard from '../containers/PostCard';
 
 
-
-const Post = ({post}) => {
+const Post = ({id}) => {
 const {singlePost} =useSelector(state=>state.post);
 const dispatch = useDispatch();
 
@@ -35,9 +35,7 @@ const dispatch = useDispatch();
                     
                 }]}
             />
-            <div>{singlePost.content}</div>
-            <div>{singlePost.User.nickname}</div>
-            <div>{singlePost.Images[0] && <img src={singlePost.Images[0].src}/>}</div>
+              <PostCard key={singlePost} post={singlePost}/>
         </>
     )
 }
