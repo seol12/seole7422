@@ -95,10 +95,12 @@ const Guidediv = styled.div`
     }
   @media only screen and (max-width: 400px) {
     width: 280px;
-     
+    margin-left: 20px;
+   
   }
   @media only screen and (max-width: 420px) {
     width: 280px;
+    margin-left: 20px;
     
   }
 
@@ -137,11 +139,10 @@ const Signup = () => {
 
   const onSubmit = useCallback((e) => {
     e.preventDefault();
-    Router.push('/LoginForm');
     if (password !== passwordCheck) {
       return setPasswordError(true);
     }
-   
+    Router.push('/LoginForm');
     return dispatch({
       type: SIGN_UP_REQUEST,
       data: {
@@ -173,7 +174,7 @@ const Signup = () => {
         <Mainsignupwidth><p>회원가입</p></Mainsignupwidth>
         <TestDiv>
           
-          <SexyInput name="user-id" placeholder="아이디" value={id} required onChange={onChangeId} />
+          <SexyInput name="user-id" placeholder="아이디" value={id} maxLength="12" required onChange={onChangeId} />
         
         </TestDiv>
         </div>
@@ -182,7 +183,7 @@ const Signup = () => {
         <div>
         <br/>
         <TestDiv>
-        <SexyInput name="user-nick" placeholder="닉네임" value={nick} required onChange={onChangeNick} />
+        <SexyInput name="user-nick" placeholder="닉네임" value={nick} maxLength="5" required onChange={onChangeNick} />
         </TestDiv>
         </div>
 
@@ -190,7 +191,7 @@ const Signup = () => {
         <div> 
         <br/>
         <TestDiv>
-          <SexyInput name="user-password" type="password" placeholder="비밀번호" value={password} required onChange={onChangePassword} />
+          <SexyInput name="user-password" type="password" placeholder="비밀번호" value={password} maxLength="12" required onChange={onChangePassword} />
          </TestDiv>
         </div>
 
@@ -199,7 +200,7 @@ const Signup = () => {
         <div>
           <br />
           <TestDiv>
-          <SexyInput name="user-password-check" placeholder="비밀번호 체크" type="password" value={passwordCheck} required onChange={onChangePasswordCheck} />
+          <SexyInput name="user-password-check" placeholder="비밀번호 체크" type="password" value={passwordCheck} maxLength="12" required onChange={onChangePasswordCheck} />
           {passwordError && <SingupError>비밀번호가 일치하지 않습니다.</SingupError>}
           </TestDiv>
         </div>

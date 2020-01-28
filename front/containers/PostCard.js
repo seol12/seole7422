@@ -3,6 +3,7 @@ import {Card, Icon, Avatar, List, Comment, Tooltip} from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import {  LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST,REMOVE_COMMENT_REQUEST } from '../reducers/post';
 import Link from 'next/link';
+import Router from 'next/router';
 import PostImages from '../components/PostImages';
 import PostCardContent from '../components/PostCardContent';
 import styled from 'styled-components';
@@ -75,6 +76,10 @@ const Nicked = styled.div`
 
   width: 70px;
   height: 120px;
+  & p{
+   cursor: pointer;
+  
+  }  
 
 `;
 
@@ -318,6 +323,10 @@ const PostCard = memo(({post}) =>{
      )
     },[])
 
+    const detailpage = useCallback(postId =>()=>{
+      Router.push(`/post/${postId}`);
+    },[])
+
    
 
 return(
@@ -326,7 +335,7 @@ return(
         <Avatadiv>
           <Link href={{ pathname: '/user', query: { id: post.User.id } }} as={`/user/${post.User.id}`}><a><Avatacosu>{post.User.nickname[0]}</Avatacosu></a></Link>
         </Avatadiv>
-        <NickForm><Nicked><p>{post.User.nickname}</p></Nicked><CreatedTm> {moment(post.createdAt).format('YYYY.MM.DD.')}</CreatedTm>  </NickForm> 
+        <NickForm><Nicked><p onClick={detailpage(post.id)}>{post.User.nickname}</p></Nicked><CreatedTm> {moment(post.createdAt).format('YYYY.MM.DD.')}</CreatedTm>  </NickForm> 
     
         {id && post.UserId === id
    
