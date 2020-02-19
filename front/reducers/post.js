@@ -132,12 +132,19 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_MAIN_POSTS_SUCCESS:
-      case LOAD_HASHTAG_POSTS_SUCCESS:
+      case LOAD_HASHTAG_POSTS_SUCCESS: {
+        action.data.forEach((d) => {
+          draft.mainPosts.push(d);
+        });
+        draft.hasMorePost = action.data.length === 10;
+        break;
+      }
       case LOAD_USER_POSTS_SUCCESS: {
         action.data.forEach((d) => {
           draft.mainPosts.push(d);
         });
         draft.hasMorePost = action.data.length === 10;
+        draft.mainPosts.sort((p,c) => {return c.id - p.id });
         break;
       }
       case LOAD_MAIN_POSTS_FAILURE:
