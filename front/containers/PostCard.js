@@ -76,6 +76,7 @@ const Nicked = styled.div`
 
   width: 70px;
   height: 120px;
+  
   & p{
    cursor: pointer;
   
@@ -179,6 +180,7 @@ const Cion = styled(Icon)`
 const CommLI = styled.li`
 
   width: 100%;
+  display:flex;
   border-bottom: 2px solid #e8e8e8;
   list-style-type: none;
   border-collapse:collapse;
@@ -202,14 +204,13 @@ const Nickdiv = styled.div`
   
   width: 58px;
   padding-bottom: none;
-  
-  & p{
-    font-size: 16px;
-    font-weight: bold;
-    color: #000000;
-    opacity: 65%;
-  }
 
+& p{
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  opacity: 65%;
+}
 `;
 
 
@@ -217,6 +218,7 @@ const Momentdiv = styled.div`
 
   color: #000000;
   opacity: 65%;
+
   & p{
     padding-left: 8px;
   }
