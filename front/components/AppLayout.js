@@ -51,6 +51,7 @@ const MainCat = styled(Row)`
   order:1;
   flex-grow: 11;
   flex-shrink: 2;
+
   @media only screen and (max-width: 400px) {
     width: 200px;
     margin-left: 0 auto;
@@ -95,6 +96,10 @@ const StyleshA = styled.a`
   color: white;
   font-size: 35px;
   font-weight: bold;
+
+  @media only screen and (max-width: 360px) {
+    font-size: 30px;
+  }
 
 `;
 

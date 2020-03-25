@@ -199,7 +199,10 @@ const RuLost = styled(List)`
 
 
 const Nickdiv = styled.div`
-
+  
+  width: 58px;
+  padding-bottom: none;
+  
   & p{
     font-size: 16px;
     font-weight: bold;
@@ -256,7 +259,7 @@ const RemoveCommentdiv = styled.div`
   display:flex;
   justify-content: flex-end;
   padding: 10px;
-  padding-top: 0px;
+  padding-top: 30px;
   padding-bottom: 10px;
   padding-right: 16px;
 
@@ -314,14 +317,15 @@ const PostCard = memo(({post}) =>{
       })
     },[])
 
-    const onRemoveComment = useCallback(postId => ()=>{
-     dispatch({
-       type:REMOVE_COMMENT_REQUEST,
-        data:post.id,
-       }
-        
-     )
-    },[])
+    const onRemoveComment = useCallback( (postId,itemId) => ()=>{
+      dispatch({
+        type:REMOVE_COMMENT_REQUEST,
+         data:{
+           postId,
+           itemId,
+         }
+        })
+     },[])
 
     const detailpage = useCallback(postId =>()=>{
       Router.push(`/post/${postId}`);
@@ -377,7 +381,7 @@ return(
                         
                         {id && item.User.id === id
                         
-                        ?<RemoveCommentdiv><BlackBtn onClick={onRemoveComment(item.id)}>제거</BlackBtn></RemoveCommentdiv>
+                        ?<RemoveCommentdiv><BlackBtn onClick={onRemoveComment(post.id,item.id)}>제거</BlackBtn></RemoveCommentdiv>
                         :null
                       }
                 </CommLI>

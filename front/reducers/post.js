@@ -195,9 +195,9 @@ export default (state = initialState, action) => {
         break;
       }
       case REMOVE_COMMENT_SUCCESS:{
-        const postIndex = draft.mainPosts.findIndex(v => v.id === action.data.postId);
-        const commentndex = draft.mainPosts[postIndex].Comments.findIndex(v => v.id === action.data.userId);
-        draft.mainPosts[postIndex].Comments.splice(commentndex, 1);
+        const postindex = draft.mainPosts.findIndex(v=> v.id === action.data.postId);
+        const coIndex = draft.mainPosts[postindex].Comments.findIndex(v => v.id === action.data.itemxid);
+         draft.mainPosts[postindex].Comments.splice(coIndex, 1);
         break;
       }
       case REMOVE_COMMENT_FAILURE:{

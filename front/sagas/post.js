@@ -312,8 +312,8 @@ function* watchLoadPost() {
 //
 
 
-function RemovecommentAPI(postId) {
-  return axios.delete(`/post/${postId}/comment`, {
+function RemovecommentAPI(data) {
+  return axios.delete(`/post/comment/${data.itemId}`, {
     withCredentials: true,
   });
 }
@@ -324,9 +324,9 @@ function* Removecomment(action) {
     yield put({
       type: REMOVE_COMMENT_SUCCESS,
       data: {
-        postId: action.data,
-        userId: result.data.userId,
-      },
+        postId: action.data.postId,
+        itemxid: result.data
+      }
     });
   } catch (e) {
     console.error(e);
