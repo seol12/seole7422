@@ -188,7 +188,7 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_POST_SUCCESS: {
-        draft.singlePost = action.data;
+        draft.mainPosts.unshift(action.data);
         break;
       }
       case REMOVE_COMMENT_REQUEST:{
