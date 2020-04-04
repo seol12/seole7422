@@ -7,6 +7,28 @@ const SlickSl = styled(Slick)`
 
   margin-bottom: 30px;
 
+  .slick-prev {
+    
+    left: -50px;
+    z-index: 1;
+  
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    
+    color: black;
+    font-size: 38px;
+  
+  }
+
+  .slick-next {
+    
+    right: -30px;
+    z-index: 1;
+    
+  }
+
 `;
 
 
