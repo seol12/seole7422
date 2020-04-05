@@ -7,6 +7,13 @@ const SlickSl = styled(Slick)`
 
   margin-bottom: 30px;
 
+  .slick-arrow {
+    
+    width: 40px;
+    height: 60px;
+ 
+  }
+
   .slick-prev {
     
     left: -50px;
@@ -18,13 +25,13 @@ const SlickSl = styled(Slick)`
   .slick-next:before {
     
     color: black;
-    font-size: 38px;
+    font-size: 36px;
   
   }
 
   .slick-next {
     
-    right: -30px;
+    right: -50px;
     z-index: 1;
     
   }
