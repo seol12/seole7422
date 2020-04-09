@@ -114,8 +114,9 @@ const StyleshB = styled.a`
 
 
 const AppLayout = ({children}) =>{
-const dispatch = useDispatch();
-const {me} =useSelector(state=>state.user);
+
+  const dispatch = useDispatch();
+  const {me} =useSelector(state=>state.user);
 
 
   const onLogout = useCallback(()=>{

@@ -273,6 +273,7 @@ const RemoveCommentdiv = styled.div`
 const PostCard = memo(({post}) =>{
 
     const [commentFormOpened,setCommentFormOpened] = useState(false);
+    const [nodal, setNodal] = useState(false);
     const id = useSelector(state=>state.user.me && state.user.me.id);
     const dispatch = useDispatch();
     const liked = id && post.Likers && post.Likers.find(v=>v.id === id);
@@ -333,6 +334,16 @@ const PostCard = memo(({post}) =>{
       Router.push(`/post/${postId}`);
     },[])
 
+    const modalon = () => {
+        
+      setNodal(true);
+    }
+
+    const modaloff = () => {
+    
+      setNodal(false)
+    }
+
    
 
 return(
@@ -345,7 +356,8 @@ return(
     
         {id && post.UserId === id
    
-        ?<FlexBtn><BlackBtn onClick={onRemovePost(post.id)}>삭제</BlackBtn></FlexBtn>
+        ?<FlexBtn><BlackBtn onClick={modalon}>삭제</BlackBtn>
+        {nodal && (<Modal post={post} onsub={onRemovePost(post.id)} onClose={modaloff}/>)}</FlexBtn>
         :<div></div>
         }
 
@@ -383,7 +395,8 @@ return(
                         
                         {id && item.User.id === id
                         
-                        ?<RemoveCommentdiv><BlackBtn onClick={onRemoveComment(post.id,item.id)}>제거</BlackBtn></RemoveCommentdiv>
+                        ?<RemoveCommentdiv><BlackBtn onClick={modalon}>제거</BlackBtn>
+                        {nodal && (<Modal  onsub={onRemoveComment(post.id,item.id)} onClose={modaloff}/>)}</RemoveCommentdiv>
                         :null
                       }
                 </CommLI>
