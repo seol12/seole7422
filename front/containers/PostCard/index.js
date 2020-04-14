@@ -11,7 +11,7 @@ import PostImages from '../../components/PostImages';
 import PostCardContent from '../../components/PostCardContent';
 import styled from 'styled-components';
 import moment from 'moment';
-import CommentForm from '../containers/CommentForm';
+import CommentForm from '../CommentForm';
 import Modal from '../../components/modal';
 moment.locale('ko');
 
