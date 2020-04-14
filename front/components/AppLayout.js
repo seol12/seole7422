@@ -1,7 +1,6 @@
 import React,{useEffect,useCallback} from 'react';
 import { Row,Col,} from 'antd';
 import Link from 'next/link'
-import LoginForm from '../pages/LoginForm';
 import {useDispatch,useSelector} from 'react-redux';
 import {  LOG_OUT_REQUEST } from '../reducers/user';
 import Router from 'next/router';
