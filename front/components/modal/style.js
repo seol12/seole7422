@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-
-const BgModal = styled.div`
+export const BgModal = styled.div`
 
   background: rgba(0, 0, 0, 0.25);
   position: fixed;
@@ -18,7 +16,7 @@ const BgModal = styled.div`
 
 `;
 
-const ModalBody = styled.div`
+export const ModalBody = styled.div`
 
 
   width: 40%;
@@ -38,7 +36,7 @@ const ModalBody = styled.div`
 
 `;
 
-const StyHead = styled.div`
+export const StyHead = styled.div`
   
   background: #20232a; 
   display: flex;
@@ -51,7 +49,7 @@ const StyHead = styled.div`
 `;
 
 
-const StyName = styled.div`
+export const StyName = styled.div`
   
   width: 340px;
 
@@ -67,7 +65,7 @@ const StyName = styled.div`
   }
 `;
 
-const XBTdv = styled.div`
+export const XBTdv = styled.div`
     
     display: flex;
     width: 100%;
@@ -86,7 +84,7 @@ const XBTdv = styled.div`
       }
 `;
 
-const StyBody = styled.div`
+export const StyBody = styled.div`
 
   width: 100%;
   height: 120px;
@@ -99,7 +97,7 @@ const StyBody = styled.div`
 
 `;
 
-const Question = styled.div`
+export const Question = styled.div`
   
   display: flex;
   width: 100%;
@@ -114,7 +112,7 @@ const Question = styled.div`
 
 `;
 
-const BuBu = styled.div`
+export const BuBu = styled.div`
   
   display: flex;
   width: 100%;
@@ -124,7 +122,7 @@ const BuBu = styled.div`
 `;
 
 
-const Btdiv = styled.div`
+export const Btdiv = styled.div`
   
   width: 60px;
   margin-right: 10px;
@@ -132,7 +130,7 @@ const Btdiv = styled.div`
 
 `;
 
-const BlackBtn = styled.button`
+export const BlackBtn = styled.button`
 
   width: 60px;
   height: 30px;
@@ -150,35 +148,3 @@ const BlackBtn = styled.button`
     }
 
 `;
-
-
-
-
-const Modal = ({post,onClose,onsub}) => {
-    return(
-        <>
-       <BgModal>
-           <ModalBody>
-              <StyHead>
-                <StyName><p>Seol Cat</p></StyName>
-                <XBTdv><button onClick={onClose}>X</button></XBTdv>
-              </StyHead>
-                <StyBody>
-                  <Question><p>정말 삭제할 거에요?</p></Question>
-                 <BuBu>
-                  <Btdiv>
-                    <BlackBtn onClick={onsub}>삭제</BlackBtn>
-                  </Btdiv>
-            
-                  <Btdiv>
-                    <BlackBtn onClick={onClose}>닫기</BlackBtn>
-                  </Btdiv>
-                 </BuBu>
-                </StyBody>           
-            </ModalBody>
-         </BgModal>
-        </>
-    );
-}
-
-export default Modal;
