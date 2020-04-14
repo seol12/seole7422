@@ -66,6 +66,7 @@ const PostCard = memo(({post}) =>{
         data: userId,
         
       })
+      setNodal(false);
     },[])
 
     const onRemoveComment = useCallback( (postId,itemId) => ()=>{
@@ -76,6 +77,7 @@ const PostCard = memo(({post}) =>{
            itemId,
          }
         })
+      setNodal(false);
      },[])
 
     const detailpage = useCallback(postId =>()=>{
