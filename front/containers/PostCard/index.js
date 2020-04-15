@@ -78,7 +78,7 @@ const PostCard = memo(({post}) =>{
            itemId,
          }
         })
-      setNodal(false);
+      codaloff();
      },[])
 
     const detailpage = useCallback(postId =>()=>{
