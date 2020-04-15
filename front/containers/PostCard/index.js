@@ -22,6 +22,7 @@ const PostCard = memo(({post}) =>{
 
     const [commentFormOpened,setCommentFormOpened] = useState(false);
     const [nodal, setNodal] = useState(false);
+    const [codal, setCodal] = useState(false);
     const id = useSelector(state=>state.user.me && state.user.me.id);
     const dispatch = useDispatch();
     const liked = id && post.Likers && post.Likers.find(v=>v.id === id);
@@ -93,6 +94,16 @@ const PostCard = memo(({post}) =>{
     
       setNodal(false)
     }
+    
+    const codalon = () => {
+        
+      setCodal(true);
+    }
+
+    const codaloff = () => {
+    
+      setCodal(false)
+    }
 
    
 
@@ -145,8 +156,8 @@ return(
                         
                         {id && item.User.id === id
                         
-                        ?<RemoveCommentdiv><BlackBtn onClick={modalon}>제거</BlackBtn>
-                        {nodal && (<Modal  onsub={onRemoveComment(post.id,item.id)} onClose={modaloff}/>)}</RemoveCommentdiv>
+                        ?<RemoveCommentdiv><BlackBtn onClick={codalon}>제거</BlackBtn>
+                        {codal && (<Modal  onsub={onRemoveComment(post.id,item.id)} onClose={codaloff}/>)}</RemoveCommentdiv>
                         :null
                       }
                 </CommLI>
