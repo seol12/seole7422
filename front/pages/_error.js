@@ -1,10 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import zlcat from '../static/404cat.jpg';
+
+
+const Igmain = styled.div`
+    
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    height: 800px;
+
+
+`;
+
+const Ercat = styled.div`
+
+    width: 100%;
+    height: 800px;
+    background: url(${zlcat});
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+`;
 
 const MyError = ({ statusCode }) => {
   return (
     <div>
-      <h1>{statusCode} 오류</h1>
+      <Igmain>
+        <Ercat/>
+      </Igmain>
     </div>
   );
 };

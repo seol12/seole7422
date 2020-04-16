@@ -17,6 +17,20 @@ module.exports = withBundelAnalyzer ( {
   if(produc){
       plugins.push( new CompressionPlugin())
   }
+  
+  config.module.rules.push({
+    test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
+    use:[{
+        loader: "url-loader",
+        options:{
+            limit:10000,
+            fallback: "file-loader",
+            name: "static/[name].[ext]",
+            esModule: false,
+         
+        },
+    }],
+  });
 
   return {
       ...config,
