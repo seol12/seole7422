@@ -217,6 +217,8 @@ export const Momentdiv = styled.div`
 
 export const Nodataempty = styled.p`
 
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
   font-size: 16px;
   font-weight: bold;
   padding: 10px;

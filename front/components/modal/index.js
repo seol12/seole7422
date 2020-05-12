@@ -16,7 +16,9 @@ const Modal = ({post,onClose,onsub}) => {
                   <Question><p>정말 삭제할 거에요?</p></Question>
                  <BuBu>
                   <Btdiv>
-                    <BlackBtn onClick={onsub}>삭제</BlackBtn>
+                    <BlackBtn onClick={((e)=>{
+                     e.stopPropagation()
+                      onsub()})}>삭제</BlackBtn>
                   </Btdiv>
             
                   <Btdiv>

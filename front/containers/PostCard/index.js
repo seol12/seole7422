@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useEffect, memo,useRef } from 'react';
-import {Card, Icon, Avatar, List, Comment, Tooltip} from 'antd';
+import {Card, } from 'antd';
 import {Cardwapper, CardHead, Avatadiv, Avatacosu, NickForm, Nicked, 
-  CreatedTm, BlackBtn, FlexBtn, SuperCard, FlexCard, BotoomCard, Heartdiv, Commentdiv, Cion, CommLI, RuLost, Nickdiv,
-  Momentdiv, Nodataempty, Avatapro, ContentColor, RemoveCommentdiv   } from './style';
+CreatedTm, BlackBtn, FlexBtn, SuperCard, FlexCard, BotoomCard, Heartdiv, Commentdiv, Cion, Nodataempty,} from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import {  LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST,REMOVE_COMMENT_REQUEST } from '../../reducers/post';
 import Link from 'next/link';
@@ -12,6 +11,7 @@ import PostCardContent from '../../components/PostCardContent';
 import styled from 'styled-components';
 import moment from 'moment';
 import CommentForm from '../CommentForm';
+import CommentList from '../CommentList';
 import Modal from '../../components/modal';
 moment.locale('ko');
 
@@ -22,7 +22,6 @@ const PostCard = memo(({post}) =>{
 
     const [commentFormOpened,setCommentFormOpened] = useState(false);
     const [nodal, setNodal] = useState(false);
-    const [codal, setCodal] = useState(false);
     const id = useSelector(state=>state.user.me && state.user.me.id);
     const dispatch = useDispatch();
     const liked = id && post.Likers && post.Likers.find(v=>v.id === id);
@@ -70,16 +69,6 @@ const PostCard = memo(({post}) =>{
       setNodal(false);
     },[])
 
-    const onRemoveComment = useCallback( (postId,itemId) => ()=>{
-      dispatch({
-        type:REMOVE_COMMENT_REQUEST,
-         data:{
-           postId,
-           itemId,
-         }
-        })
-      codaloff();
-     },[])
 
     const detailpage = useCallback(postId =>()=>{
       Router.push(`/post/${postId}`);
@@ -95,17 +84,6 @@ const PostCard = memo(({post}) =>{
       setNodal(false)
     }
     
-    const codalon = () => {
-        
-      setCodal(true);
-    }
-
-    const codaloff = () => {
-    
-      setCodal(false)
-    }
-
-   
 
 return(
     <Cardwapper>
@@ -137,39 +115,20 @@ return(
       {commentFormOpened && (
         <>
           <CommentForm post={post}/>
-            <RuLost
-              dataSource={post.Comments || []}
-              locale={{ emptyText: <Nodataempty>댓글이 존재 하지 않습니다</Nodataempty> }} 
-              renderItem={ item=>(
-                <CommLI>
-                  <Comment
-                    author={<Nickdiv><p>{item.User.nickname}</p></Nickdiv>}
-                    avatar={<Link href={{pathname: '/user', query: {id: item.User.id}}}
-                    as={`/user/${item.User.id}`} ><Avatapro><a><Avatacosu>{item.User.nickname[0]}</Avatacosu></a></Avatapro></Link> }
-                    datetime={
-                      <>
-                        <Tooltip title={moment(item.createdAt).format('YYYY.MM.DD HH:mm:ss')}>
-                          <Momentdiv>{moment(item.createdAt).fromNow()}</Momentdiv></Tooltip>
-                      </>}
-                    content={<ContentColor>{item.content}</ContentColor>}
-                  />
-                        
-                        {id && item.User.id === id
-                        
-                        ?<RemoveCommentdiv><BlackBtn onClick={codalon}>제거</BlackBtn>
-                        {codal && (<Modal  onsub={onRemoveComment(post.id,item.id)} onClose={codaloff}/>)}</RemoveCommentdiv>
-                        :null
-                      }
-                </CommLI>
-                      )}
-            />
+          {post.Comments && post.Comments.length > 0 || ( 
+            <Nodataempty>댓글이 존재 하지 않습니다</Nodataempty>) }
+          {post.Comments && post.Comments.map((v,i)=>{
+              return(
+                  <>
+                    <CommentList key={i} comments={v} post={post}/>
+                  </>
+              );
+         })}
           
-          </>
+        </>
       )}
     </Cardwapper>
   );
-
-
 });
 
   
