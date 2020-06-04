@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import {Avatar} from 'antd';
+import {Avatar, Comment} from 'antd';
 
-
+export const Cox = styled(Comment)`
+  
+  width: 80%;
+ 
+`
 export const Momentdiv = styled.div`
 
   color: #000000;
@@ -40,6 +44,7 @@ export const Avatapro = styled.div`
 
 export const ContentColor = styled.p`
 
+  width: 80%;
   color: #000000;
   opacity: 45%;
   font-size: 14px;
@@ -91,8 +96,8 @@ export const BlackBtn = styled.button`
 
 
 export const RemoveCommentdiv = styled.div`
-
-  width: 100%;
+ 
+  width: 20%;
   display:flex;
   justify-content: flex-end;
   padding: 10px;

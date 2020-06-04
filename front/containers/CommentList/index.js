@@ -1,8 +1,8 @@
 import React, {useState, useCallback} from 'react';
 import { useSelector, useDispatch,  } from 'react-redux';
 import Link from 'next/link';
-import {Comment, Tooltip} from 'antd';
-import {CommLI, Nickdiv, Avatapro, Avatacosu, Momentdiv, ContentColor, RemoveCommentdiv, BlackBtn,     } from './style';
+import {Tooltip} from 'antd';
+import {CommLI, Nickdiv, Avatapro, Avatacosu, Momentdiv, ContentColor, RemoveCommentdiv, BlackBtn, Cox     } from './style';
 import {REMOVE_COMMENT_REQUEST} from '../../reducers/post';
 import moment from 'moment';
 import Modal from '../../components/modal';
@@ -45,7 +45,7 @@ const CommentList = ({comments, post})=> {
     return(
         <>
           <CommLI>
-            <Comment             
+            <Cox             
               author={<Nickdiv><p>{comments.User.nickname}</p></Nickdiv>}
               avatar={<Link href={{pathname: '/user', query: {id: comments.User.id}}}
               as={`/user/${comments.User.id}`} ><Avatapro><a><Avatacosu>{comments.User.nickname[0]}</Avatacosu></a></Avatapro></Link> }
