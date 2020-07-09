@@ -20,7 +20,6 @@ const Modal = ({post,onClose,onsub}) => {
                      e.stopPropagation()
                       onsub()})}>삭제</BlackBtn>
                   </Btdiv>
-            
                   <Btdiv>
                     <BlackBtn onClick={onClose}>닫기</BlackBtn>
                   </Btdiv>
