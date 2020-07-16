@@ -48,8 +48,6 @@ router.get('/:id', async (req, res, next) => {
     });
     const jsonUser = user.toJSON();
     jsonUser.Posts = jsonUser.Posts ? jsonUser.Posts.length : 0;
-    jsonUser.Followings = jsonUser.Followings ? jsonUser.Followings.length : 0;
-    jsonUser.Followers = jsonUser.Followers ? jsonUser.Followers.length : 0;
     res.json(jsonUser);
   } catch (e) {
     console.error(e);
