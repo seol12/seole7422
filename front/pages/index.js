@@ -7,38 +7,28 @@ import { LOAD_MAIN_POSTS_REQUEST,} from '../reducers/post';
 
 const Home = () =>{
     const dispatch = useDispatch();
-    const {mainPosts,hasMorePost} = useSelector(state=> state.post);
+    const {mainPosts, pendingPost, muchPost} = useSelector(state=> state.post);
     const {me} = useSelector(state => state.user);
-    const countRef = useRef([]);
    
     
     
-    const onScroll = useCallback(() => {
-       
-    if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300){
-        if(hasMorePost){
-            
-            const lastId = mainPosts[mainPosts.length -1].id
-            if(!countRef.current.includes(lastId)){
-                dispatch({
-                    type: LOAD_MAIN_POSTS_REQUEST,
-                    lastId,
-        
-                }); 
-                countRef.current.push(lastId)
-            }
-           }
-         }
-    },[hasMorePost, mainPosts.length]);
-
-  
     useEffect(() => {
-        window.addEventListener('scroll', onScroll);
-        return () => {
-          window.removeEventListener('scroll', onScroll);
-        };
-      }, [mainPosts.length]);
-
+      const onScroll = () => {
+        if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+          if (muchPost && !pendingPost) {
+            const lastId = mainPosts[mainPosts.length - 1].id;
+            dispatch({
+              type: LOAD_MAIN_POSTS_REQUEST,
+              lastId,
+            });
+          }
+        }
+      }
+      window.addEventListener('scroll', onScroll);
+      return () => {
+        window.removeEventListener('scroll', onScroll);
+      };
+    }, [muchPost, mainPosts, pendingPost]);
     
       
       

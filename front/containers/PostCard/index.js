@@ -120,7 +120,7 @@ return(
           {post.Comments && post.Comments.map((v,i)=>{
               return(
                   <>
-                    <CommentList key={i} comments={v} post={post}/>
+                    <CommentList key={v.id} comments={v} post={post}/>
                   </>
               );
          })}

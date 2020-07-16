@@ -4,7 +4,9 @@ export const initialState = {
   mainPosts: [], 
   imagePaths: [], 
   addPostErrorReason: '', 
-  isAddingPost: false, 
+  isAddingPost: false,
+  muchPost: true,
+  pendingPost: false,  
   postAdded: false, 
   isAddingComment: false,
   addCommentErrorReason: '',
@@ -127,16 +129,18 @@ export default (state = initialState, action) => {
       case LOAD_MAIN_POSTS_REQUEST:
       case LOAD_HASHTAG_POSTS_REQUEST:
       case LOAD_USER_POSTS_REQUEST: {
+        draft.pendingPost = true;
         draft.mainPosts = !action.lastId ? [] : draft.mainPosts;
-        draft.hasMorePost = action.lastId ? draft.hasMorePost : true;
+        draft.muchPost = action.lastId ? draft.muchPost : true;
         break;
       }
       case LOAD_MAIN_POSTS_SUCCESS:
       case LOAD_HASHTAG_POSTS_SUCCESS: {
+        draft.pendingPost = false;
         action.data.forEach((d) => {
           draft.mainPosts.push(d);
         });
-        draft.hasMorePost = action.data.length === 10;
+        draft.muchPost = action.data.length === 10;
         break;
       }
       case LOAD_USER_POSTS_SUCCESS: {
