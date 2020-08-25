@@ -95,10 +95,14 @@ router.post('/login', (req, res, next) => {
 
 router.get('/:id/posts', async (req, res, next) => {
   try {
-    const posts = await db.Post.findAll({
-      where: {
-        UserId: parseInt(req.params.id, 10) || (req.user && req.user.id) || 0,
-        RetweetId: null,
+    const selectuser = db.User.findOne({
+      where: { 
+        nickname: req.params.id
+      },
+    })
+    const userposts = db.Post.findAll({
+      where: { 
+        id: selectuser.id
       },
       include: [{
         model: db.User,
@@ -111,8 +115,8 @@ router.get('/:id/posts', async (req, res, next) => {
         as: 'Likers',
         attributes: ['id'],
       }],
-    });
-    res.json(posts);
+    })
+    return res.json(userposts);
   } catch (e) {
     console.error(e);
     next(e);
