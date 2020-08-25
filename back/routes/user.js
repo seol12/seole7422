@@ -95,14 +95,14 @@ router.post('/login', (req, res, next) => {
 
 router.get('/:id/posts', async (req, res, next) => {
   try {
-    const selectuser = db.User.findOne({
+    const selectuser = await db.User.findOne({
       where: { 
         nickname: req.params.id
       },
     })
-    const userposts = db.Post.findAll({
+    const userposts = await db.Post.findAll({
       where: { 
-        id: selectuser.id
+        UserId: selectuser.id
       },
       include: [{
         model: db.User,
