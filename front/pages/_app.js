@@ -21,7 +21,7 @@ const Didhddl = ({Component,store,pageProps}) => {
     <Container>
         <Provider store={store}>
         <Helmet
-          title="seolcat"
+          title="seolecat"
           htmlAttributes={{lang: 'ko'}}
           meta={[{
             charSet: "UTF-8",
@@ -36,11 +36,11 @@ const Didhddl = ({Component,store,pageProps}) => {
 
           },{
             name: 'description', 
-            content: 'seolcat',
+            content: 'seolecat',
 
           },{
             name: 'og:description',
-            content: 'seolcat',
+            content: 'seolecat',
 
           },{
             property: 'og:type',
@@ -52,7 +52,7 @@ const Didhddl = ({Component,store,pageProps}) => {
 
           },{
             property: 'og:image',
-            content: 'http://seolcat.com/favicon.ico',
+            content: 'http://seolecat.com/favicon.ico',
             
           }]}
           link={[{
