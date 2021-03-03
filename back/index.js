@@ -27,7 +27,7 @@ if(prod){
   app.use(helmet());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'http://seolcat.com',
+    origin: 'http://seolecat.com',
     credentials: true,
   }))
 }else{
@@ -50,7 +50,7 @@ app.use(expressSession({
   cookie: {
     httpOnly: true,
     secure: false, 
-    domain: prod && '.seolcat.com',
+    domain: prod && '.seolecat.com',
   },
   name: 'didhddl',
 }));
