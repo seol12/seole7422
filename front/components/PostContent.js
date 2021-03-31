@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 
-const PostCardContent = ({ postData}) => {
+const PostContent = ({ postData}) => {
     
   return (
     <div>
@@ -25,4 +25,4 @@ const PostCardContent = ({ postData}) => {
 };
 
 
-export default PostCardContent;
+export default PostContent;

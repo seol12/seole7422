@@ -6,7 +6,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { LOG_OUT_REQUEST} from '../../reducers/user';
 
 
-const AppLayout = ({ children}) => {
+const Layout = ({ children}) => {
 
   const dispatch = useDispatch();
   const { me} = useSelector(state => state.user);
@@ -46,4 +46,4 @@ const AppLayout = ({ children}) => {
 }
 
 
-export default AppLayout;
+export default Layout;

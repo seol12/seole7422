@@ -1,5 +1,5 @@
 import React from 'react';
-import AppLayout from '../components/AppLayout';
+import Layout from '../components/Layout';
 import PropTypes from 'prop-types';
 import {Provider, useDispatch} from 'react-redux';
 import withRedux from 'next-redux-wrapper';
@@ -72,11 +72,11 @@ const Didhddl = ({Component,store,pageProps}) => {
  
         />
      
-        <AppLayout>
+        <Layout>
     
         <Component {...pageProps}/>
   
-        </AppLayout>
+        </Layout>
         </Provider>
         </Container>
     );

@@ -7,7 +7,7 @@ import {  LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_
 import Link from 'next/link';
 import Router from 'next/router';
 import PostImages from '../../components/PostImages';
-import PostCardContent from '../../components/PostCardContent';
+import PostContent from '../../components/PostContent';
 import styled from 'styled-components';
 import moment from 'moment';
 import CommentForm from '../CommentForm';
@@ -103,7 +103,7 @@ return(
     </CardHead>
       <FlexCard>
         <SuperCard cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
-         <Card.Meta description={<PostCardContent postData={post.content} />} />
+         <Card.Meta description={<PostContent postData={post.content} />} />
         </SuperCard>
       </FlexCard>
       <BotoomCard>
