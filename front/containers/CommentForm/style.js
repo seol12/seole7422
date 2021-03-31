@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SubmitForm = styled.form `
+export const SubmitForm = styled.form`
 
     width: 100%;
     height: 78px;
@@ -12,7 +12,7 @@ export const SubmitForm = styled.form `
 
 export const InputWrapper = styled.div`
 
-    display:flex;
+    display: flex;
 
 `;
 
@@ -42,6 +42,7 @@ export const SubmitButton = styled.button`
       
       border: 2px solid white;
       opacity: 90%;
+      
     }
 
 `;
