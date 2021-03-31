@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Commentxorm = styled.form `
+export const SubmitForm = styled.form `
 
     width: 100%;
     height: 78px;
@@ -10,13 +10,13 @@ export const Commentxorm = styled.form `
 
 `;
 
-export const Flexdiv = styled.div`
+export const InputWrapper = styled.div`
 
     display:flex;
 
 `;
 
-export const Textinput = styled.textarea`
+export const CommentInput = styled.textarea`
 
     width: 94%;
     border: none;
@@ -25,7 +25,7 @@ export const Textinput = styled.textarea`
 
 `;
 
-export const BlackBtn = styled.button`
+export const SubmitButton = styled.button`
 
     width: 64px;
     height: 40px;
@@ -34,10 +34,12 @@ export const BlackBtn = styled.button`
     font-weight: bold;
     border-radius: 20px;
     border: none;
-    font-size:14px;
+    font-size: 14px;
     margin: 10px;
     margin-top: 16px;
-    &:hover ${BlackBtn}{
+
+    &:hover ${SubmitButton} {
+      
       border: 2px solid white;
       opacity: 90%;
     }
