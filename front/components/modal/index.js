@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {BgModal, ModalBody, StyHead, StyName, XBTdv, StyBody, Question, BuBu, Btdiv,  BlackBtn } from './style';
 
 
-const Modal = ({post,onClose,onsub}) => {
+const Modal = ({ post, onClose, onSub}) => {
     return(
         <>
        <BgModal>
@@ -16,9 +16,7 @@ const Modal = ({post,onClose,onsub}) => {
                   <Question><p>정말 삭제할 거에요?</p></Question>
                  <BuBu>
                   <Btdiv>
-                    <BlackBtn onClick={((e)=>{
-                     e.stopPropagation()
-                      onsub()})}>삭제</BlackBtn>
+                    <BlackBtn onClick={onSub}>삭제</BlackBtn>
                   </Btdiv>
                   <Btdiv>
                     <BlackBtn onClick={onClose}>닫기</BlackBtn>

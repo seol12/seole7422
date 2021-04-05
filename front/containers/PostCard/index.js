@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import CommentForm from '../CommentForm';
 import CommentList from '../CommentList';
-import Modal from '../../components/modal';
+import Modal from '../../components/Modal';
 moment.locale('ko');
 
 
@@ -96,7 +96,7 @@ return(
         {id && post.UserId === id
    
         ?<FlexBtn><BlackBtn onClick={modalon}>삭제</BlackBtn>
-        {nodal && (<Modal post={post} onsub={onRemovePost(post.id)} onClose={modaloff}/>)}</FlexBtn>
+        {nodal && (<Modal post={post} onSub={onRemovePost(post.id)} onClose={modaloff}/>)}</FlexBtn>
         :<div></div>
         }
 
