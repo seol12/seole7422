@@ -7,7 +7,7 @@ CommentContent, RemoveCommentWrapper, RemoveCommentButton,
 } from './style';
 import { REMOVE_COMMENT_REQUEST} from '../../reducers/post';
 import moment from 'moment';
-import Modal from '../../components/Modal';
+import Modal from '../../components/modal';
 moment.locale('ko');
 
 
