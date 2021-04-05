@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Slick from 'react-slick';
 import styled from 'styled-components';
 
-
+//작업 예정 //
 const SlickSl = styled(Slick)`
 
   margin-bottom: 30px;
