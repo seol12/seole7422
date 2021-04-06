@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import CommentForm from '../CommentForm';
 import CommentList from '../CommentList';
-import Modal from '../../components/modal';
+import Modal from '../../components/Modal';
 moment.locale('ko');
 
 
