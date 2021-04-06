@@ -50,7 +50,6 @@ export const ModalHead = styled.div`
   
 `;
 
-
 export const DomainName = styled.div`
   
   width: 340px;
@@ -126,7 +125,6 @@ export const ButtonBar = styled.div`
   justify-content: flex-end;
 
 `;
-
 
 export const RemoveButtonWrapper = styled.div`
   
