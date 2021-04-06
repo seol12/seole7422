@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const BgModal = styled.div`
+
+export const ModalBackGround = styled.div`
 
   background: rgba(0, 0, 0, 0.25);
   position: fixed;
@@ -16,8 +17,7 @@ export const BgModal = styled.div`
 
 `;
 
-export const ModalBody = styled.div`
-
+export const ModalWrapper = styled.div`
 
   width: 40%;
   height: 200px;
@@ -26,17 +26,19 @@ export const ModalBody = styled.div`
     
     width: 300px;
     height: 200px;
+
   }
 
   @media only screen and (max-width: 500px) {
     
     width: 300px;
     height: 200px;
+
   }
 
 `;
 
-export const StyHead = styled.div`
+export const ModalHead = styled.div`
   
   background: #20232a; 
   display: flex;
@@ -49,12 +51,11 @@ export const StyHead = styled.div`
 `;
 
 
-export const StyName = styled.div`
+export const DomainName = styled.div`
   
   width: 340px;
 
-
-   & p {
+  & p {
 
     padding: 6px;
     padding-left: 10px;
@@ -63,28 +64,31 @@ export const StyName = styled.div`
     font-weight: bold;
 
   }
+
 `;
 
-export const XBTdv = styled.div`
+export const Exit = styled.div`
     
     display: flex;
     width: 100%;
     justify-content: flex-end;
 
-      & button {
+    & button {
 
-        border: none;
-        font-size: 20px;
-        padding: 10px;
-        padding-top: 8px;
-        padding-right: 20px;
-        font-weight: bold;
-        color: white;
-        background: none;
-      }
+      border: none;
+      font-size: 20px;
+      padding: 10px;
+      padding-top: 8px;
+      padding-right: 20px;
+      font-weight: bold;
+      color: white;
+      background: none;
+
+    }
+
 `;
 
-export const StyBody = styled.div`
+export const ModalBody = styled.div`
 
   width: 100%;
   height: 120px;
@@ -104,15 +108,17 @@ export const Question = styled.div`
   justify-content: center;
   border-bottom: 2px solid #e8e8e8;
     
-    & p {
-      font-size: 20px;
-      padding-top: 20px;
-      font-weight: bold;
-    }
+  & p {
+  
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: bold;
+  
+  }
 
 `;
 
-export const BuBu = styled.div`
+export const ButtonBar = styled.div`
   
   display: flex;
   width: 100%;
@@ -122,7 +128,7 @@ export const BuBu = styled.div`
 `;
 
 
-export const Btdiv = styled.div`
+export const RemoveButtonWrapper = styled.div`
   
   width: 60px;
   margin-right: 10px;
@@ -130,7 +136,15 @@ export const Btdiv = styled.div`
 
 `;
 
-export const BlackBtn = styled.button`
+export const ExitButtonWrapper = styled.div`
+  
+  width: 60px;
+  margin-right: 10px;
+  justify-content: flex-end;
+
+`;
+
+export const RemoveButton = styled.button`
 
   width: 60px;
   height: 30px;
@@ -139,12 +153,33 @@ export const BlackBtn = styled.button`
   font-weight: bold;
   border-radius: 20px;
   border: none;
-  font-size:14px;
+  font-size: 14px;
   
-    &:hover ${BlackBtn}{
+  &:hover ${RemoveButton}{
         
-      border: 1px solid white;
-      opacity: 90%;
-    }
+    border: 1px solid white;
+    opacity: 90%;
+
+  }
+
+`;
+
+export const ExitButton = styled.button`
+
+  width: 60px;
+  height: 30px;
+  background-color: #20232a;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  
+  &:hover ${ExitButton}{
+        
+    border: 1px solid white;
+    opacity: 90%;
+
+  }
 
 `;
