@@ -15,7 +15,7 @@ import Modal from '../../components/Modal';
 moment.locale('ko');
 
 
-const PostCard = memo(({ post}) => {
+const PostFrame = memo(({ post}) => {
 
   const [ commentFormOpened, setCommentFormOpened] = useState(false);
   const [ nodal, setNodal] = useState(false);
@@ -113,15 +113,15 @@ const PostCard = memo(({ post}) => {
         <>
           <CommentForm post={post}/>
           {post.Comments && post.Comments.length > 0 || ( 
-            <Nodataempty>댓글이 존재 하지 않습니다</Nodataempty>) }
-          {post.Comments && post.Comments.map((v,i)=>{
-              return(
-                  <>
-                    <CommentList key={v.id} comments={v} post={post}/>
-                  </>
-              );
-         })}
-          
+            <Nodataempty>댓글이 존재 하지 않습니다</Nodataempty>
+          )}
+          {post.Comments && post.Comments.map((v,i) => {
+            return (
+              <>
+                <CommentList key={v.id} comments={v} post={post}/>
+              </>
+            );
+          })}
         </>
       )}
     </Cardwapper>
@@ -129,4 +129,4 @@ const PostCard = memo(({ post}) => {
 });
 
   
-export default PostCard;
+export default PostFrame;
