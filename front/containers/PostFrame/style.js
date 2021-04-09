@@ -155,6 +155,13 @@ export const CommentButtonWrapper = styled.div`
 
 `;
 
+export const CommentIcon = styled(Icon)`
+
+  padding: 20px;
+  font-size: 30px;
+
+`;
+
 export const ContainingNoData = styled.p`
 
   color: rgba(0, 0, 0, 0.45);
