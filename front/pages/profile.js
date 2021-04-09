@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { LOAD_USER_POSTS_REQUEST } from '../reducers/post';
-import PostCard from '../containers/PostCard';
+import PostFrame from  '../containers/PostFrame';
 
 
 const Profile = () => {
@@ -12,7 +12,7 @@ const Profile = () => {
     return (
         <div>
         {mainPosts.map(c => (
-          <PostCard key={+c.id} post={c} />
+          <PostFrame key={+c.id} post={c} />
         ))}
           </div>
       );
