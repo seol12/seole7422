@@ -1,7 +1,7 @@
-import {Card, Icon, Avatar, List, Comment, Tooltip} from 'antd';
+import {Card, Icon, Avatar} from 'antd';
 import styled from 'styled-components';
 
-export const Cardwapper = styled.div`
+export const PostWrapper = styled.div`
   
   margin-top: 10px;
   margin-bottom: 20px;
@@ -10,8 +10,7 @@ export const Cardwapper = styled.div`
 
 `;
 
-
-export const CardHead = styled.div`
+export const PostHead = styled.div`
 
   display: flex;
   width: 100%;
@@ -19,8 +18,7 @@ export const CardHead = styled.div`
 
 `;
 
-
-export const Avatadiv = styled.div`
+export const AvataWrapper = styled.div`
 
   width: 78px;
   height: 50px;
@@ -29,8 +27,7 @@ export const Avatadiv = styled.div`
 
 `;
 
-
-export const Avatacosu = styled(Avatar)`
+export const AvataContent = styled(Avatar)`
 
   width: 50px;
   height: 50px;
@@ -42,8 +39,7 @@ export const Avatacosu = styled(Avatar)`
 
 `;
 
-
-export const NickForm = styled.div`
+export const NicknameWrapper = styled.div`
   
   margin-top: 10px;
   display: flex;
@@ -52,7 +48,8 @@ export const NickForm = styled.div`
   padding: 20px;
   padding-left: 8px;
   
-  & p{
+  & p {
+    
     font-size: 16px;
     font-weight: bold;
   
@@ -60,21 +57,20 @@ export const NickForm = styled.div`
 
 `;
 
-
-export const Nicked = styled.div`
+export const Nickname = styled.div`
 
   width: 70px;
   height: 120px;
   
-  & p{
-   cursor: pointer;
+  & p {
+  
+  cursor: pointer;
   
   }  
 
 `;
 
-
-export const CreatedTm = styled.div`
+export const CreationDate = styled.div`
   
   margin-left: 6px;
   margin-top: 2px;
@@ -82,27 +78,7 @@ export const CreatedTm = styled.div`
 
 `;
 
-
-export const BlackBtn = styled.button`
-
-  width: 50px;
-  height: 30px;
-  background-color: #20232a;
-  color: white;
-  font-weight: bold;
-  border-radius: 20px;
-  border: none;
-  font-size:14px;
-  
-    &:hover ${BlackBtn}{
-      border: 1px solid white;
-      opacity: 90%;
-    }
-
-`;
-
-
-export const FlexBtn = styled.div`
+export const RemovePostWrapper = styled.div`
 
   display: flex;
   width: 100%;
@@ -113,17 +89,27 @@ export const FlexBtn = styled.div`
 
 `;
 
+export const RemoveCommentButton = styled.button`
 
-export const SuperCard = styled(Card)`
+  width: 50px;
+  height: 30px;
+  background-color: #20232a;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
   
-  border:none;
-  margin: 0 auto;
-  width: 70%;
+  &:hover ${RemoveCommentButton}{
+      
+      border: 1px solid white;
+      opacity: 90%;
+
+  }
 
 `;
 
-
-export const FlexCard = styled.div`
+export const PostBody = styled.div`
 
   margin-top: 10px;
   align-items: center;
@@ -131,8 +117,15 @@ export const FlexCard = styled.div`
 
 `;
 
+export const PhotoImages = styled(Card)`
+  
+  border: none;
+  margin: 0 auto;
+  width: 70%;
 
-export const BotoomCard = styled.div`
+`;
+
+export const PostFooter = styled.div`
 
   display: flex;
   width: 100%;
@@ -140,16 +133,21 @@ export const BotoomCard = styled.div`
 
 `;
 
-
-export const Heartdiv = styled.div`
+export const LikeButtonWrapper = styled.div`
 
   display: flex;
   width: 90%;
 
 `;
 
+export const LikeIcon = styled(Icon)`
 
-export const Commentdiv = styled.div`
+  padding: 20px;
+  font-size: 30px;
+
+`;
+
+export const CommentButtonWrapper = styled.div`
 
   display: flex;
   width: 200px;
@@ -157,65 +155,7 @@ export const Commentdiv = styled.div`
 
 `;
 
-
-export const Cion = styled(Icon)`
-
-  padding: 20px;
-  font-size: 30px;
-
-`;
-
-
-export const CommLI = styled.li`
-
-  width: 100%;
-  display:flex;
-  border-bottom: 2px solid #e8e8e8;
-  list-style-type: none;
-  border-collapse:collapse;
-
-`;
-
-
-export const RuLost = styled(List)`
-
-  width: 100%;
-
-  & ul{
-    padding-left: 0px;
-    margin-bottom: 0;
-  }
-
-`;
-
-
-export const Nickdiv = styled.div`
-  
-  width: 58px;
-  padding-bottom: none;
-
-& p{
-  font-size: 16px;
-  font-weight: bold;
-  color: #000000;
-  opacity: 65%;
-}
-`;
-
-
-export const Momentdiv = styled.div`
-
-  color: #000000;
-  opacity: 65%;
-
-  & p{
-    padding-left: 8px;
-  }
-
-`;
-
-
-export const Nodataempty = styled.p`
+export const ContainingNoData = styled.p`
 
   color: rgba(0, 0, 0, 0.45);
   text-align: center;
@@ -223,37 +163,5 @@ export const Nodataempty = styled.p`
   font-weight: bold;
   padding: 10px;
   padding-bottom: 0px;
-
-`;
-
-
-export const Avatapro = styled.div`
-
-  width: 80px;
-  height: 60px;
-  padding-left: 20px;
-  padding-top: 4px;
-
-`;
-
-
-export const ContentColor = styled.p`
-
-  color: #000000;
-  opacity: 45%;
-  font-size: 14px;
-  padding-top: 10px;
-
-`;
-
-export const RemoveCommentdiv = styled.div`
-
-  width: 100%;
-  display:flex;
-  justify-content: flex-end;
-  padding: 10px;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  padding-right: 16px;
 
 `;

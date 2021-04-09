@@ -1,9 +1,10 @@
-import React, { useState, useCallback, useEffect, memo,useRef } from 'react';
-import {Card, } from 'antd';
-import {Cardwapper, CardHead, Avatadiv, Avatacosu, NickForm, Nicked, 
-CreatedTm, BlackBtn, FlexBtn, SuperCard, FlexCard, BotoomCard, Heartdiv, Commentdiv, Cion, Nodataempty,} from './style';
+import React, { useState, useCallback, memo,} from 'react';
+import { Card} from 'antd';
+import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nickname, 
+CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PhotoImages, PostFooter, 
+LikeButtonWrapper, LikeIcon, CommentButtonWrapper, CommentIcon, ContainingNoData,} from './style';
 import { useSelector, useDispatch } from 'react-redux';
-import { LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST,REMOVE_COMMENT_REQUEST } from '../../reducers/post';
+import { LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
 import Router from 'next/router';
 import PostImages from '../../components/PostImages';
@@ -66,7 +67,7 @@ const PostFrame = memo(({ post}) => {
   },[]);
 
 
-  const detailpage = useCallback((postId) => () => {
+  const onDetailPage = useCallback((postId) => () => {
     
     return Router.push(`/post/${postId}`);
   
@@ -80,40 +81,42 @@ const PostFrame = memo(({ post}) => {
 
 
   return (
-    <Cardwapper>
-      <CardHead>
-        <Avatadiv>
-          <Link href={{ pathname: '/user', query: { id: post.User.nickname } }} as={`/user/${post.User.nickname}`}><a><Avatacosu>{post.User.nickname[0]}</Avatacosu></a></Link>
-        </Avatadiv>
-        <NickForm>
-          <Nicked><p onClick={detailpage(post.id)}>{post.User.nickname}</p></Nicked>
-          <CreatedTm> {moment(post.createdAt).format('YYYY.MM.DD.')}</CreatedTm>
-        </NickForm> 
+    <PostWrapper>
+      <PostHead>
+        <AvataWrapper>
+          <Link href={{ pathname: '/user', query: { id: post.User.nickname } }} as={`/user/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
+        </AvataWrapper>
+        <NicknameWrapper>
+          <Nickname><p onClick={onDetailPage(post.id)}>{post.User.nickname}</p></Nickname>
+          <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD.')}</CreationDate>
+        </NicknameWrapper> 
         {id && post.UserId === id
-        ?<FlexBtn>
-          <BlackBtn onClick={onToggleModal}>삭제</BlackBtn>
+        ?<RemovePostWrapper>
+          <RemoveCommentButton onClick={onToggleModal}>삭제</RemoveCommentButton>
           {nodal && (<Modal post={post} onSub={onRemovePost(post.id)} onClose={onToggleModal}/>)}
-        </FlexBtn>
+        </RemovePostWrapper>
         :<div></div>
         }
-      </CardHead>
-      <FlexCard>
-        <SuperCard cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
+      </PostHead>
+      <PostBody>
+        <PhotoImages cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
         <Card.Meta description={<PostContent postData={post.content} />} />
-        </SuperCard>
-      </FlexCard>
-      <BotoomCard>
-        <Heartdiv><Cion type="heart" key="heart" theme={liked ?'twoTone' :'outlined'} twoToneColor="#eb2f96" onClick={onToggleLike} />
-        </Heartdiv>
-        <Commentdiv><Cion type="message" key="message" onClick={onToggleComment}/>
-        <div></div>
-        </Commentdiv>
-      </BotoomCard>
+        </PhotoImages>
+      </PostBody>
+      <PostFooter>
+        <LikeButtonWrapper>
+          <LikeIcon type="heart" key="heart" theme={liked ?'twoTone' :'outlined'} twoToneColor="#eb2f96" onClick={onToggleLike} />
+        </LikeButtonWrapper>
+        <CommentButtonWrapper>
+          <CommentIcon type="message" key="message" onClick={onToggleComment}/>
+          <div></div>
+        </CommentButtonWrapper>
+      </PostFooter>
       {commentFormOpened && (
         <>
           <CommentForm post={post}/>
           {post.Comments && post.Comments.length > 0 || ( 
-            <Nodataempty>댓글이 존재 하지 않습니다</Nodataempty>
+            <ContainingNoData>댓글이 존재 하지 않습니다</ContainingNoData>
           )}
           {post.Comments && post.Comments.map((v,i) => {
             return (
@@ -124,7 +127,7 @@ const PostFrame = memo(({ post}) => {
           })}
         </>
       )}
-    </Cardwapper>
+    </PostWrapper>
   );
 });
 
