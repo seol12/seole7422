@@ -54,7 +54,7 @@ const PostCard = memo(({ post}) => {
     }
   },[id, post && post.id, liked]);
 
-    
+   
   const onRemovePost = useCallback((userId) => () => {
   
     dispatch({
