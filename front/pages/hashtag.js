@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_HASHTAG_POSTS_REQUEST } from '../reducers/post';
-import PostCard from '../containers/PostCard';
+import PostFrame from '../containers/PostFrame';
 
 const Hashtag = ({ tag }) => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Hashtag = ({ tag }) => {
   return (
     <div>
       {mainPosts.map(c => (
-        <PostCard key={c.id} post={c} />
+        <PostFrame key={c.id} post={c} />
       ))}
     </div>
   );
