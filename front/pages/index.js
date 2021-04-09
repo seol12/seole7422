@@ -1,7 +1,7 @@
 import React,{useEffect, useCallback, useRef} from 'react';
 import PostForm from '../containers/PostForm';
 import {useDispatch,useSelector} from 'react-redux';
-import PostCard from '../containers/PostCard';
+import PostFrame from '../containers/PostFrame';
 import { LOAD_MAIN_POSTS_REQUEST,} from '../reducers/post';
 
 
@@ -38,7 +38,7 @@ const Home = () =>{
         {me && <PostForm/>}
        {mainPosts.map((c)=>{
            return (
-               <PostCard key={c.id} post={c}/>
+               <PostFrame key={c.id} post={c}/>
            );
        } )}
        </div>
