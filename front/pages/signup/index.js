@@ -2,29 +2,21 @@ import React, { useCallback, useState, useEffect } from 'react';
 import {Form, Input } from 'antd';
 import {FlexForm, Mainsignupwidth, TestDiv, SexyInput, BlackBtn, Margindiv, Linediv, Guidediv, SingupError } from './style';
 import { useDispatch, useSelector } from 'react-redux';
+import { useValueChanged} from '../../customhooks';
 import Router from 'next/router';
 import { SIGN_UP_REQUEST } from '../../reducers/user';
-import styled from 'styled-components';
 import Link from 'next/link';
 
 
-
-export const useInput = (initValue = null) => {
-  const [value, setter] = useState(initValue);
-  const handler = useCallback((e) => {
-    setter(e.target.value);
-  }, []);
-  return [value, handler];
-};
-
 const Signup = () => {
-  const [passwordCheck, setPasswordCheck] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const [id, onChangeId] = useInput('');
-  const [nick, onChangeNick] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  
+  const [ passwordCheck, setPasswordCheck] = useState('');
+  const [ passwordError, setPasswordError] = useState(false);
+  const [ id, onChangeId] = useValueChanged('');
+  const [ nick, onChangeNick] = useValueChanged('');
+  const [ password, onChangePassword] = useValueChanged('');
   const dispatch = useDispatch();
-  const { me } = useSelector(state => state.user);
+  const { me} = useSelector(state => state.user);
 
 
   useEffect(() => {
