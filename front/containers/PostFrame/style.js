@@ -1,4 +1,4 @@
-import {Card, Icon, Avatar} from 'antd';
+import { Card, Icon, Avatar} from 'antd';
 import styled from 'styled-components';
 
 export const PostWrapper = styled.div`
