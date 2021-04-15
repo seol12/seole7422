@@ -2,7 +2,7 @@ import React,{ useCallback, useEffect} from 'react';
 import Link from 'next/link';
 import { SubmitForm, LoginParagraph, IdinputWrapper, IdInput, PasswordWrapper, PasswordInput, 
 LoginError, LoginButtonWrapper, LoginButton, Line, SignupGuide} from './style';
-import { useInput} from '../signup';
+import { useValueChanged} from '../../customhooks';
 import { useDispatch, useSelector} from 'react-redux';
 import { LOG_IN_REQUEST} from '../../reducers/user';
 import Router from 'next/router';
@@ -10,11 +10,11 @@ import Router from 'next/router';
 
 const LoginForm = () => {
 
-    const dispatch = useDispatch();
-    const [ id, onChangeId] = useInput('');
-    const [ password, onChangePassword] = useInput('');
-    const { me} = useSelector(state=>state.user);
+    const [ id, onChangeId] = useValueChanged('');
+    const [ password, onChangePassword] = useValueChanged('');
+    const { me} = useSelector(state => state.user);
     const { logInErrorReason} = useSelector(state => state.user);
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
