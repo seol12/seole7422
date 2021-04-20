@@ -27,7 +27,7 @@ const Layout = ({ children}) => {
           <MainCat key="home"><Link href="/"><MainpageHL>Seol Cat</MainpageHL></Link></MainCat>        
           {me
           ?<LoginCat key="login"><LoginoutHL onClick={onLogout}>Log Out</LoginoutHL></LoginCat> 
-          :<LoginCat key="login"><Link href="/LoginForm"><LoginoutHL>Login</LoginoutHL></Link></LoginCat>
+          :<LoginCat key="login"><Link href="/Login"><LoginoutHL>Login</LoginoutHL></Link></LoginCat>
           }
           <SignupCat key="signup"><Link href="/signup"><SignupHL>SignUp</SignupHL></Link></SignupCat>  
         </HeaderNv>
