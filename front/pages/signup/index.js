@@ -30,7 +30,7 @@ const Signup = () => {
     if (password !== passwordCheck) {
       return setPasswordError(true);
     }
-    Router.push('/LoginForm');
+    Router.push('/Login');
     return dispatch({
       type: SIGN_UP_REQUEST,
       data: {
@@ -99,7 +99,7 @@ const Signup = () => {
         <Linediv> 
         </Linediv>
         <Guidediv>
-        <p>이미 계정이 있으신가요? <Link href="/LoginForm"><a>로그인</a></Link>을 해주세요.</p>
+        <p>이미 계정이 있으신가요? <Link href="/Login"><a>로그인</a></Link>을 해주세요.</p>
         </Guidediv>
 
 
