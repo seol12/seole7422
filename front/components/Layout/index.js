@@ -29,7 +29,7 @@ const Layout = ({ children}) => {
           ?<LoginCat key="login"><LoginoutHL onClick={onLogout}>Log Out</LoginoutHL></LoginCat> 
           :<LoginCat key="login"><Link href="/Login"><LoginoutHL>Login</LoginoutHL></Link></LoginCat>
           }
-          <SignupCat key="signup"><Link href="/signup"><SignupHL>SignUp</SignupHL></Link></SignupCat>  
+          <SignupCat key="signup"><Link href="/Signup"><SignupHL>SignUp</SignupHL></Link></SignupCat>  
         </HeaderNv>
       </Headers>
       <Row gutter={8}>
