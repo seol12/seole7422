@@ -8,7 +8,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { LOG_IN_REQUEST} from '../../reducers/user';
 
 
-const LoginForm = () => {
+const Login = () => {
 
     const [ id, onChangeId] = useValueChanged('');
     const [ password, onChangePassword] = useValueChanged('');
@@ -67,4 +67,4 @@ const LoginForm = () => {
 };
 
 
-export default LoginForm;
+export default Login;
