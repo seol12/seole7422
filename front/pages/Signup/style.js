@@ -1,7 +1,7 @@
-import {Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 import styled from 'styled-components';
 
-export const FlexForm = styled(Form)`
+export const SubmitForm = styled(Form)`
 
   display: flex;
   align-items: center;
@@ -12,43 +12,125 @@ export const FlexForm = styled(Form)`
 
 `;
 
-export const Mainsignupwidth = styled.div`
+export const SignupParagraph = styled.div`
   
   width: 100%;
   height: 70px;
   text-align: center;
-    & p{
-      font-size: 32px;
-      font-weight: bold;
-      line-height: 60px;
-      color: black;
-    }
+  
+  & p {
+  
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 60px;
+    color: black;
+
+  }
 
 `;
 
-export const TestDiv = styled.div`
+export const IdinputWrapper = styled.div`
 
   width: 100%;
-  heiht: 70px; 
 
 `;
 
-export const SexyInput = styled(Input)`
+export const IdInput = styled(Input)`
   
   justify-content : center;
   width: 400px;
   height: 44px;
   padding: 10px;
   box-shadow: 1px 2px 3px 1px gray;
+
   @media only screen and (max-width: 400px) {
-      width: 360px;
+    
+    width: 360px;
      
   }
 
 `;
 
+export const NicknameInputWrapper = styled.div`
 
-export const BlackBtn = styled.button`
+  width: 100%;
+
+`;
+
+export const NicknameInput = styled(Input)`
+  
+  justify-content : center;
+  width: 400px;
+  height: 44px;
+  padding: 10px;
+  box-shadow: 1px 2px 3px 1px gray;
+
+  @media only screen and (max-width: 400px) {
+    
+    width: 360px;
+     
+  }
+
+`;
+
+export const PasswordInputWrapper = styled.div`
+
+  width: 100%;
+
+`;
+
+export const PasswordInput = styled(Input)`
+  
+  justify-content : center;
+  width: 400px;
+  height: 44px;
+  padding: 10px;
+  box-shadow: 1px 2px 3px 1px gray;
+
+  @media only screen and (max-width: 400px) {
+    
+    width: 360px;
+     
+  }
+
+`;
+
+export const PasswordCheckInputWrapper = styled.div`
+
+  width: 100%;
+
+`;
+
+export const PasswordCheckInput = styled(Input)`
+  
+  justify-content : center;
+  width: 400px;
+  height: 44px;
+  padding: 10px;
+  box-shadow: 1px 2px 3px 1px gray;
+
+  @media only screen and (max-width: 400px) {
+    
+    width: 360px;
+     
+  }
+
+`;
+
+export const SignupError = styled.div`
+
+  color: red;
+  margin-top: 25px;
+
+`;
+
+export const SubmitButtonWrapper = styled.div`
+
+  margin-top: 30px;
+
+`;
+
+export const SubmitButton = styled.button`
 
   width: 100px;
   height: 40px;
@@ -57,20 +139,17 @@ export const BlackBtn = styled.button`
   font-weight: bold;
   border-radius: 20px;
   border: none;
-  &:hover ${BlackBtn}{
-      border: 2px solid white;
-      opacity: 90%;
+
+  &:hover ${SubmitButton} {
+    
+    border: 2px solid white;
+    opacity: 90%;
+
   }
 
 `;
 
-export const Margindiv = styled.div`
-
-  margin-top: 30px;
-
-`;
-
-export const Linediv = styled.div`
+export const Line = styled.div`
 
   width: 400px;
   margin-top: 30px;
@@ -79,20 +158,27 @@ export const Linediv = styled.div`
 
 `;
 
-export const Guidediv = styled.div`
+export const LoginGuide = styled.div`
   
   margin-top: 25px;
-    & p{
-      color: gray;
-      font-weight: bold;
-      font-size: 14px;
-    }
+  
+  & p {
+    
+    color: gray;
+    font-weight: bold;
+    font-size: 14px;
+
+  }
+
   @media only screen and (max-width: 400px) {
+  
     width: 280px;
     margin-left: 30px;
    
   }
+
   @media only screen and (max-width: 420px) {
+  
     width: 280px;
     margin-left: 30px;
     
@@ -100,9 +186,3 @@ export const Guidediv = styled.div`
 
 `;
 
-export const SingupError = styled.div`
-
-  color: red;
-  margin-top: 25px;
-
-`;

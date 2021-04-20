@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import {Form, Input } from 'antd';
-import {FlexForm, Mainsignupwidth, TestDiv, SexyInput, BlackBtn, Margindiv, Linediv, Guidediv, SingupError } from './style';
+import { SubmitForm, SignupParagraph, IdinputWrapper, IdInput, NicknameInputWrapper, NicknameInput, 
+PasswordInputWrapper, PasswordInput, PasswordCheckInputWrapper, PasswordCheckInput, SignupError,
+SubmitButtonWrapper, SubmitButton, Line, LoginGuide } from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useValueChanged} from '../../customhooks';
 import Router from 'next/router';
@@ -20,15 +21,21 @@ const Signup = () => {
 
 
   useEffect(() => {
+  
     if (me) {
+    
       Router.push('/');
+    
     }
   }, [me && me.id]);
 
   const onSubmit = useCallback((e) => {
+    
     e.preventDefault();
     if (password !== passwordCheck) {
+      
       return setPasswordError(true);
+
     }
     Router.push('/Login');
     return dispatch({
@@ -43,69 +50,57 @@ const Signup = () => {
   }, [id, nick, password, passwordCheck,]);
 
   const onChangePasswordCheck = useCallback((e) => {
+    
     setPasswordError(e.target.value !== password);
     setPasswordCheck(e.target.value);
+
   }, [password]);
 
+  if(me) {
 
-
-  if(me){
     return null;
     
   }
+
   return (
     <>
-      <FlexForm onSubmit={onSubmit} >
-        
-        
-        <div>
-        <Mainsignupwidth><p>회원가입</p></Mainsignupwidth>
-        <TestDiv>
-          
-          <SexyInput name="user-id" placeholder="아이디" value={id} maxLength="12" required onChange={onChangeId} />
-        
-        </TestDiv>
-        </div>
-        
-        
-        <div>
+      <SubmitForm onSubmit={onSubmit} >
+      <div>
+        <SignupParagraph><p>회원가입</p></SignupParagraph>
+        <IdinputWrapper> 
+          <IdInput name="user-id" placeholder="아이디" value={id} maxLength="12" required onChange={onChangeId} />
+        </IdinputWrapper>
+      </div>
+      <div>
         <br/>
-        <TestDiv>
-        <SexyInput name="user-nick" placeholder="닉네임" value={nick} maxLength="5" required onChange={onChangeNick} />
-        </TestDiv>
-        </div>
-
-
-        <div> 
+        <NicknameInputWrapper>
+          <NicknameInput name="user-nick" placeholder="닉네임" value={nick} maxLength="5" required onChange={onChangeNick} />
+        </NicknameInputWrapper>
+      </div>
+      <div> 
         <br/>
-        <TestDiv>
-          <SexyInput name="user-password" type="password" placeholder="비밀번호" value={password} maxLength="12" required onChange={onChangePassword} />
-         </TestDiv>
-        </div>
-
-
-
-        <div>
-          <br />
-          <TestDiv>
-          <SexyInput name="user-password-check" placeholder="비밀번호 체크" type="password" value={passwordCheck} maxLength="12" required onChange={onChangePasswordCheck} />
-          {passwordError && <SingupError>비밀번호가 일치하지 않습니다.</SingupError>}
-          </TestDiv>
-        </div>
-
-        <Margindiv>
-          <BlackBtn  htmlType="submit">가입하기</BlackBtn>
-        </Margindiv>
-        <Linediv> 
-        </Linediv>
-        <Guidediv>
+        <PasswordInputWrapper>
+          <PasswordInput name="user-password" type="password" placeholder="비밀번호" value={password} maxLength="12" required onChange={onChangePassword} />
+        </PasswordInputWrapper>
+      </div>
+      <div>
+        <br />
+        <PasswordCheckInputWrapper>
+          <PasswordCheckInput name="user-password-check" placeholder="비밀번호 체크" type="password" value={passwordCheck} maxLength="12" required onChange={onChangePasswordCheck} />
+          {passwordError && <SignupError>비밀번호가 일치하지 않습니다.</SignupError>}
+        </PasswordCheckInputWrapper>
+      </div>
+      <SubmitButtonWrapper>
+          <SubmitButton htmlType="submit">가입하기</SubmitButton>
+      </SubmitButtonWrapper>
+      <Line/> 
+      <LoginGuide>
         <p>이미 계정이 있으신가요? <Link href="/Login"><a>로그인</a></Link>을 해주세요.</p>
-        </Guidediv>
-
-
-      </FlexForm>
+      </LoginGuide>
+      </SubmitForm>
     </>
   );
 };
+
 
 export default Signup;
