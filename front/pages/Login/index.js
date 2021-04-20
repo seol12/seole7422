@@ -60,7 +60,7 @@ const Login = () => {
         </LoginButtonWrapper>
         <Line/>
         <SignupGuide>
-            <p>처음 오셨나요? <Link href="/signup"><a>회원가입</a></Link>을 해주세요.</p>
+            <p>처음 오셨나요? <Link href="/Signup"><a>회원가입</a></Link>을 해주세요.</p>
         </SignupGuide> 
         </SubmitForm>
     );
