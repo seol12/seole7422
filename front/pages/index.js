@@ -2,13 +2,14 @@ import React,{useEffect, useCallback, useRef} from 'react';
 import PostForm from '../containers/PostForm';
 import {useDispatch,useSelector} from 'react-redux';
 import PostFrame from '../containers/PostFrame';
-import { LOAD_MAIN_POSTS_REQUEST,} from '../reducers/post';
+import { LOAD_MAIN_POSTS_REQUEST} from '../reducers/post';
+import { SIGN_UP_CHECKED} from '../reducers/user';
 
 
 const Home = () =>{
     const dispatch = useDispatch();
     const {mainPosts, pendingPost, muchPost} = useSelector(state=> state.post);
-    const {me} = useSelector(state => state.user);
+    const { me, signUpChecked} = useSelector(state => state.user);
    
     
     
@@ -30,6 +31,13 @@ const Home = () =>{
       };
     }, [muchPost, mainPosts, pendingPost]);
     
+    useEffect(() => {
+      
+      dispatch({
+        type: SIGN_UP_CHECKED
+      });
+
+    },[signUpChecked])
       
       
     return(
