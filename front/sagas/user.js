@@ -47,7 +47,7 @@ function* signUp(action) {
     console.error(e);
     yield put({
       type: SIGN_UP_FAILURE,
-      error: e,
+      error: e.response.data,
     });
   }
 }
