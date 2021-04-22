@@ -149,6 +149,13 @@ export const SubmitButton = styled.button`
 
 `;
 
+export const DuplicateNickname = styled.div`
+
+  margin-top: 10px;
+  color: red;
+
+`;
+
 export const Line = styled.div`
 
   width: 400px;

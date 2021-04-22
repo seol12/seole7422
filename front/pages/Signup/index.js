@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { SubmitForm, SignupParagraph, IdinputWrapper, IdInput, NicknameInputWrapper, NicknameInput, 
 PasswordInputWrapper, PasswordInput, PasswordCheckInputWrapper, PasswordCheckInput, SignupError,
-SubmitButtonWrapper, SubmitButton, Line, LoginGuide } from './style';
+SubmitButtonWrapper, SubmitButton, DuplicateNickname, Line, LoginGuide } from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useValueChanged} from '../../customhooks';
 import Router from 'next/router';
