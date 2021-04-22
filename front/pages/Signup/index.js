@@ -17,7 +17,7 @@ const Signup = () => {
   const [ nick, onChangeNick] = useValueChanged('');
   const [ password, onChangePassword] = useValueChanged('');
   const dispatch = useDispatch();
-  const { me, signUpErrorReason, signupchecked } = useSelector(state => state.user);
+  const { me, signUpErrorReason, signUpChecked } = useSelector(state => state.user);
 
 
   useEffect(() => {
@@ -31,13 +31,13 @@ const Signup = () => {
 
   useEffect(() => {
     
-    if (signupchecked) {
+    if (signUpChecked) {
     
       Router.push('/Login');
 
     }
 
-  },[signupchecked])
+  },[signUpChecked])
 
   const onSubmit = useCallback((e) => {
     
