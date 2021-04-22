@@ -47,7 +47,6 @@ const Signup = () => {
       return setPasswordError(true);
 
     }
-    Router.push('/Login');
     return dispatch({
       type: SIGN_UP_REQUEST,
       data: {
