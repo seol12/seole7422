@@ -33,6 +33,8 @@ export const LOG_OUT_FAILURE = 'LOG_OUT_FAILURE';
 
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
+export const SIGN_UP_CHECKED = 'SIGN_UP_CHECKED';
+
 
 export default (state = initialState, action) => {
   return produce(state, (draft) => {
