@@ -17,7 +17,7 @@ const Signup = () => {
   const [ nick, onChangeNick] = useValueChanged('');
   const [ password, onChangePassword] = useValueChanged('');
   const dispatch = useDispatch();
-  const { me} = useSelector(state => state.user);
+  const { me, signUpErrorReason, signupchecked } = useSelector(state => state.user);
 
 
   useEffect(() => {
@@ -28,6 +28,16 @@ const Signup = () => {
     
     }
   }, [me && me.id]);
+
+  useEffect(() => {
+    
+    if (signupchecked) {
+    
+      Router.push('/Login');
+
+    }
+
+  },[signupchecked])
 
   const onSubmit = useCallback((e) => {
     
@@ -93,6 +103,7 @@ const Signup = () => {
       <SubmitButtonWrapper>
           <SubmitButton htmlType="submit">가입하기</SubmitButton>
       </SubmitButtonWrapper>
+      {signUpErrorReason && <DuplicateNickname>{signUpErrorReason}</DuplicateNickname>}
       <Line/> 
       <LoginGuide>
         <p>이미 계정이 있으신가요? <Link href="/Login"><a>로그인</a></Link>을 해주세요.</p>
