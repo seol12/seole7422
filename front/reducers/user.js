@@ -7,7 +7,7 @@ export const initialState = {
   isSignedUp: false, 
   isSigningUp: false, 
   signUpErrorReason: null,
-  signupchecked : null,
+  signUpChecked : null,
   me: null, 
   userInfo: null, 
   hasMoreFollower: false,
@@ -66,7 +66,7 @@ export default (state = initialState, action) => {
         break;
       }
       case SIGN_UP_CHECKED : {
-        draft.signupchecked = null;
+        draft.signUpChecked = null;
         draft.signUpErrorReason = null;        
         break;
       }
@@ -80,7 +80,7 @@ export default (state = initialState, action) => {
         draft.isSigningUp = false;
         draft.isSignedUp = true;
         draft.signUpErrorReason = null;
-        draft.signupchecked = action.data;
+        draft.signUpChecked = action.data;
         break;
       }
       case SIGN_UP_FAILURE: {
