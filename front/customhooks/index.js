@@ -11,4 +11,16 @@ export const useValueChanged = (initialValue = null) => {
     },[]);
     return [value, handler, setter];
 
-} 
+}
+
+export const usePrevstateChanged = (initialValue) => {
+
+    const [ value, setter] = useState(initialValue);
+    const handler = useCallback(() => {
+
+        setter(prev => !prev);
+        
+    },[]);
+    return [ value, handler, setter];
+    
+}
