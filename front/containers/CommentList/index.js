@@ -7,22 +7,17 @@ CommentContent, RemoveCommentWrapper, RemoveCommentButton,
 } from './style';
 import { REMOVE_COMMENT_REQUEST} from '../../reducers/post';
 import moment from 'moment';
+import { usePrevstateChanged} from '../../customhooks';
 import Modal from '../../components/Modal';
 moment.locale('ko');
 
 
 const CommentList = ({ comments, post}) => {
   
-  const [codal, setCodal] = useState(false);
+  const [ CommentModalon, OnToggleCommentModal] = usePrevstateChanged(false);
   const id = useSelector(state => state.user.me && state.user.me.id);
   const dispatch = useDispatch();
   
-  
-  const ontogglemodal = () => {
-        
-    setCodal(prev => !prev);
-     
-  }
 
   const onRemoveComment = useCallback((itemId) => (e) => {
     
@@ -34,7 +29,7 @@ const CommentList = ({ comments, post}) => {
         itemId,
       }
     })
-    setCodal(false);
+    OnToggleCommentModal();
           
   },[])
 
@@ -57,8 +52,8 @@ const CommentList = ({ comments, post}) => {
         />
         {id && comments.User.id === id                
           ?<RemoveCommentWrapper>
-            <RemoveCommentButton onClick={ontogglemodal}>제거</RemoveCommentButton>
-              {codal && (<Modal post={post} item={comments.id} onSub={onRemoveComment(comments.id)} onClose={ontogglemodal}/>)} 
+            <RemoveCommentButton onClick={OnToggleCommentModal}>제거</RemoveCommentButton>
+              {CommentModalon && (<Modal post={post} item={comments.id} onSub={onRemoveComment(comments.id)} onClose={OnToggleCommentModal}/>)} 
             </RemoveCommentWrapper>
           :null
         }
