@@ -12,6 +12,7 @@ import PostContent from '../../components/PostContent';
 import moment from 'moment';
 import CommentForm from '../CommentForm';
 import CommentList from '../CommentList';
+import { usePrevstateChanged} from '../../customhooks';
 import Modal from '../../components/Modal';
 moment.locale('ko');
 
@@ -19,7 +20,7 @@ moment.locale('ko');
 const PostFrame = memo(({ post}) => {
 
   const [ commentFormOpened, setCommentFormOpened] = useState(false);
-  const [ nodal, setNodal] = useState(false);
+  const [ PostModalon, OnTogglePostModal] = usePrevstateChanged(false);
   const id = useSelector(state => state.user.me && state.user.me.id);
   const dispatch = useDispatch();
   const liked = id && post.Likers && post.Likers.find((v) => {return v.id === id});
@@ -62,7 +63,7 @@ const PostFrame = memo(({ post}) => {
       type: REMOVE_POST_REQUEST,
       data: userId,     
     })
-    setNodal(false);
+    return OnTogglePostModal();
 
   },[]);
 
@@ -73,12 +74,6 @@ const PostFrame = memo(({ post}) => {
   
   },[]);
 
-  const onToggleModal = () => {
-        
-    return setNodal(prev => !prev);
-  
-  };
-
 
   return (
     <PostWrapper>
@@ -88,12 +83,12 @@ const PostFrame = memo(({ post}) => {
         </AvataWrapper>
         <NicknameWrapper>
           <Nickname><p onClick={onDetailPage(post.id)}>{post.User.nickname}</p></Nickname>
-          <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD.')}</CreationDate>
+          <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
         </NicknameWrapper> 
         {id && post.UserId === id
         ?<RemovePostWrapper>
-          <RemoveCommentButton onClick={onToggleModal}>삭제</RemoveCommentButton>
-          {nodal && (<Modal post={post} onSub={onRemovePost(post.id)} onClose={onToggleModal}/>)}
+          <RemoveCommentButton onClick={OnTogglePostModal}>삭제</RemoveCommentButton>
+          {PostModalon && (<Modal post={post} onSub={onRemovePost(post.id)} onClose={OnTogglePostModal}/>)}
         </RemovePostWrapper>
         :<div></div>
         }
