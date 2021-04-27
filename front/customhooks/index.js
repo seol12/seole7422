@@ -19,6 +19,7 @@ export const usePrevstateChanged = (initialValue) => {
     const handler = useCallback(() => {
 
         setter(prev => !prev);
+        
     },[]);
     return [ value, handler, setter];
     
