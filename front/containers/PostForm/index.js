@@ -6,8 +6,6 @@ PreviewImage, RemoveImageButtonWrapper, RemoveImageButton } from './style';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../../reducers/post';
 
 
-
-
 const PostForm = () => {
 
   const { me} = useSelector(state => state.user);
