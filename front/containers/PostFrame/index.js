@@ -79,7 +79,7 @@ const PostFrame = memo(({ post}) => {
     <PostWrapper>
       <PostHead>
         <AvataWrapper>
-          <Link href={{ pathname: '/user', query: { id: post.User.nickname } }} as={`/user/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
+          <Link href={{ pathname: '/UserPosts', query: { id: post.User.nickname } }} as={`/UserPosts/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
         </AvataWrapper>
         <NicknameWrapper>
           <Nickname><p onClick={onDetailPage(post.id)}>{post.User.nickname}</p></Nickname>
