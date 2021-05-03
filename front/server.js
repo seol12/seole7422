@@ -8,9 +8,11 @@ const path = require('path');
 const dev = process.env.NODE_ENV !== 'production';
 const prod = process.env.NODE_ENV === 'production';
 
+
 const app = next({ dev });
 const handle = app.getRequestHandler();
 dotenv.config();
+
 
 app.prepare().then(() => {
   const server = express();
@@ -38,8 +40,8 @@ app.prepare().then(() => {
     return app.render(req, res, '/hashtag', { tag: req.params.tag });
   });
 
-  server.get('/user/:id', (req, res) => {
-    return app.render(req, res, '/user', { id: req.params.id });
+  server.get('/UserPosts/:id', (req, res) => {
+    return app.render(req, res, '/UserPosts', { id: req.params.id });
   });
 
   server.get('*', (req, res) => {
@@ -49,4 +51,5 @@ app.prepare().then(() => {
   server.listen(prod ?process.env.PORT :3060, () => {
     console.log(`next+express running on port 3060 ${process.env.PORT}`);
   });
+
 });
