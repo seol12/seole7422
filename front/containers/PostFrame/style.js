@@ -48,10 +48,12 @@ export const NicknameWrapper = styled.div`
   padding: 20px;
   padding-left: 8px;
   
-  & p {
+  & a {
     
     font-size: 16px;
     font-weight: bold;
+    color: black;
+    opacity: 0.65;
   
   }
 
@@ -62,12 +64,6 @@ export const Nickname = styled.div`
   width: 70px;
   height: 120px;
   
-  & p {
-  
-  cursor: pointer;
-  
-  }  
-
 `;
 
 export const CreationDate = styled.div`
