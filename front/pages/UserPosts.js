@@ -1,25 +1,28 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_USER_POSTS_REQUEST } from '../reducers/post';
-import { LOAD_USER_REQUEST } from '../reducers/user';
 import PostFrame from '../containers/PostFrame';
 
-const User = () => {
+const UserPosts = () => {
+
   const dispatch = useDispatch();
   const { mainPosts } = useSelector(state => state.post);
 
+
   return (
     <div>
-      {mainPosts.map(c => (
-        <PostFrame key={+c.id} post={c} />
-      ))}
+      {mainPosts.map(v => { 
+        return (
+          <PostFrame key={+v.id} post={v} />
+        );
+      })}
     </div>
   );
 };
 
 
+UserPosts.getInitialProps = async (context) => {
 
-User.getInitialProps = async (context) => {
   const id = context.query.id
   context.store.dispatch({
     type: LOAD_USER_POSTS_REQUEST,
@@ -28,4 +31,5 @@ User.getInitialProps = async (context) => {
   return { id };
 };
 
-export default User;
+
+export default UserPosts;
