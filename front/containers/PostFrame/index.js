@@ -6,7 +6,6 @@ LikeButtonWrapper, LikeIcon, CommentButtonWrapper, CommentIcon, ContainingNoData
 import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
-import Router from 'next/router';
 import PostImages from '../../components/PostImages';
 import PostContent from '../../components/PostContent';
 import moment from 'moment';
@@ -64,14 +63,6 @@ const PostFrame = memo(({ post}) => {
       data: userId,     
     })
     return OnTogglePostModal();
-
-  },[]);
-
-
-  const onDetailPage = useCallback((postId) => () => {
-    
-    return Router.push(`/post/${postId}`);
-  
   },[]);
 
 
@@ -82,7 +73,7 @@ const PostFrame = memo(({ post}) => {
           <Link href={{ pathname: '/UserPosts', query: { id: post.User.nickname } }} as={`/UserPosts/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
         </AvataWrapper>
         <NicknameWrapper>
-          <Nickname><p onClick={onDetailPage(post.id)}>{post.User.nickname}</p></Nickname>
+          <Link href={{ pathname: '/post', query : { id: post.id}}} as={`/post/${post.id}`} ><Nickname><p>{post.User.nickname}</p></Nickname></Link>
           <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
         </NicknameWrapper> 
         {id && post.UserId === id
