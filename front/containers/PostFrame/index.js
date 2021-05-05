@@ -73,7 +73,7 @@ const PostFrame = memo(({ post}) => {
           <Link href={{ pathname: '/UserPosts', query: { id: post.User.nickname } }} as={`/UserPosts/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
         </AvataWrapper>
         <NicknameWrapper>
-          <Link href={{ pathname: '/post', query : { id: post.id}}} as={`/post/${post.id}`} ><Nickname><p>{post.User.nickname}</p></Nickname></Link>
+          <Link href={{ pathname: '/post', query : { id: post.id}}} as={`/post/${post.id}`} ><Nickname><a>{post.User.nickname}</a></Nickname></Link>
           <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
         </NicknameWrapper> 
         {id && post.UserId === id
