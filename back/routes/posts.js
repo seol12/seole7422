@@ -3,10 +3,12 @@ const db = require('../models');
 
 const router = express.Router();
 
+
 router.get('/', async (req, res, next) => { 
+  
   try {
     let where = {};
-    if (parseInt(req.query.lastId, 10)) {
+    if(parseInt(req.query.lastId, 10)) {
       where = {
         id: {
           [db.Sequelize.Op.lt]: parseInt(req.query.lastId, 10), 
@@ -29,11 +31,13 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']], 
       limit: parseInt(req.query.limit, 10),
     });
-    res.json(posts);
-  } catch (e) {
+    return res.json(posts);
+  }catch(e) {
     console.error(e);
     next(e);
   }
+
 });
+
 
 module.exports = router;
