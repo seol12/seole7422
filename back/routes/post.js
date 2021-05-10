@@ -72,7 +72,7 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
         attributes: ['id'],
       }],
     });
-    return res.json(fullPost);
+    res.json(fullPost);
   }catch(e) {
     console.error(e);
     next(e);
@@ -82,7 +82,7 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
 
 router.post('/images', upload.array('image'), (req, res) => {
 
-  return res.json(req.files.map((v) => { return v.location}));
+  res.json(req.files.map((v) => { return v.location}));
 
 });
 
@@ -103,7 +103,7 @@ router.get('/:id', async (req, res, next) => {
         attributes:['id']
       }],
     });
-    return res.json(post);
+    res.json(post);
   }catch(e) {
     console.error(e);
     next(e);
@@ -119,7 +119,7 @@ router.delete('/:id', isLoggedIn, async (req, res, next) => {
       return res.status(404).send('포스트가 존재하지 않습니다.');
     }
     await db.Post.destroy({ where: { id: req.params.id}});
-    return res.send(req.params.id);
+    res.send(req.params.id);
   }catch(e) {
     console.error(e);
     next(e);
@@ -144,7 +144,7 @@ router.get('/:id/comments', async (req, res, next) => {
         attributes: ['id', 'nickname'],
       }],
     });
-    return res.json(comments);
+    res.json(comments);
   }catch(e) {
     console.error(e);
     next(e);
@@ -174,7 +174,7 @@ router.post('/:id/comment', isLoggedIn, async (req, res, next) => {
         attributes: ['id', 'nickname'],
       }],
     });
-    return res.json(comment);
+    res.json(comment);
   }catch(e) {
     console.error(e);
     return next(e);
@@ -190,7 +190,7 @@ router.post('/:id/like', isLoggedIn, async (req, res, next) => {
       return res.status(404).send('포스트가 존재하지 않습니다.');
     }
     await post.addLiker(req.user.id);
-    return res.json({ userId: req.user.id});
+    res.json({ userId: req.user.id});
   }catch(e) {
     console.error(e);
     next(e);
@@ -206,7 +206,7 @@ router.delete('/:id/like', isLoggedIn, async (req, res, next) => {
       return res.status(404).send('포스트가 존재하지 않습니다.');
     }
     await post.removeLiker(req.user.id);
-    return res.json({ userId: req.user.id});
+    res.json({ userId: req.user.id});
   }catch(e) {
     console.error(e);
     next(e);
@@ -218,7 +218,7 @@ router.delete('/comment/:id', isLoggedIn, async (req, res, next) => {
   
   try {
     await db.Comment.destroy({ where: { id: req.params.id }});
-    return res.send(req.params.id);
+    res.send(req.params.id);
   }catch(e) {
     console.error(e);
     next(e);
