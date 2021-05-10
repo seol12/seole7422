@@ -17,7 +17,6 @@ router.get('/:tag', async (req, res, next) => {
       };
     }
     const posts = await db.Post.findAll({
-      
       where,
       include: [{
         model: db.Hashtag,
