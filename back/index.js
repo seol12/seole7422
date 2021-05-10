@@ -27,7 +27,7 @@ if(prod){
   app.use(helmet());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: 'http://seolecat.com',
+    origin: ['http://seolecat.com','http://www.seolecat.com'],
     credentials: true,
   }))
 }else{
