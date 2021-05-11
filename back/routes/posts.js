@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']], 
       limit: parseInt(req.query.limit, 10),
     });
-    res.json(posts);
+    return res.json(posts);
   }catch(e) {
     console.error(e);
     next(e);
