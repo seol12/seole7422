@@ -15,28 +15,26 @@ const postsAPIRouter = require('./routes/posts');
 const hashtagAPIRouter = require('./routes/hashtag');
 
 
-
 const prod = process.env.NODE_ENV === 'production';
 dotenv.config();
 const app = express();
 db.sequelize.sync();
 passportConfig();
 
-if(prod){
+if(prod) {
   app.use(hpp());
   app.use(helmet());
   app.use(morgan('combined'));
   app.use(cors({
     origin: ['http://seolecat.com','http://www.seolecat.com'],
     credentials: true,
-  }))
-}else{
+  }));
+}else { 
   app.use(morgan('dev'));
   app.use(cors({
     origin: true,
     credentials: true,
   }));
-
 }
 
 app.use('/', express.static('uploads'));
@@ -60,6 +58,7 @@ app.use('/api/user', userAPIRouter);
 app.use('/api/post', postAPIRouter);
 app.use('/api/posts', postsAPIRouter);
 app.use('/api/hashtag', hashtagAPIRouter);
+
 
 app.listen(prod ? process.env.PORT : 3065, () => {
   console.log(`server is running on http://localhost:3065${process.env.PORT}`);
