@@ -16,7 +16,7 @@ const PostImages = ({ images}) => {
     <>
       <div>
         <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1} arrows={true} accessibility={true} adaptiveHeight={true}>
-          {images.map((c,i) => {
+          {images.map((v,i) => {
             return (
               <img key ={i} src={images[i].src}/>
             );
