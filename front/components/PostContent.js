@@ -14,7 +14,7 @@ const PostContent = ({ postData}) => {
               as={`/hashtag/${v.slice(1)}`}
               key={v}
             >
-            <a>{v}</a>
+              <a>{v}</a>
             </Link>
           );
         }
