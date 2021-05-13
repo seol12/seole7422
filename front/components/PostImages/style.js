@@ -36,3 +36,4 @@ export const Slider = styled(Slick)`
   }
 
 `;
+
