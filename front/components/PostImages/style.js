@@ -6,33 +6,33 @@ export const Slider = styled(Slick)`
 
   margin-bottom: 30px;
     
-   .slick-arrow {
+  .slick-arrow {
     
-      width: 40px;
-      height: 60px;
+    width: 40px;
+    height: 60px;
  
-    }
+  }
 
-    .slick-prev {
+  .slick-prev {
     
-      left: -50px;
-      z-index: 1;
+    left: -50px;
+    z-index: 1;
   
-    }
+  }
 
-    .slick-prev:before,
-    .slick-next:before {
+  .slick-prev:before,
+  .slick-next:before {
 
-      color: black;
-      font-size: 36px;
+    color: black;
+    font-size: 36px;
 
-    }
+  }
 
-    .slick-next {
+  .slick-next {
 
-      right: -50px;
-      z-index: 1;
+    right: -50px;
+    z-index: 1;
 
-    }
+  }
 
 `;
