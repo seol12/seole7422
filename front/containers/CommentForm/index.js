@@ -47,7 +47,7 @@ const CommentForm = ({ post}) => {
     <>
       <SubmitForm onSubmit={onSubmitComment}>
         <InputWrapper>
-          <CommentInput placeholder="댓글을 남겨보세요" value={commentText} onChange={onChangeCommentText}/>
+          <CommentInput placeholder="댓글을 남겨보세요" value={commentText} onChange={onChangeCommentText} />
           <SubmitButton htmlType="submit">야옹</SubmitButton>
         </InputWrapper>
       </SubmitForm>
