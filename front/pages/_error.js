@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import zlcat from '../static/404cat.jpg';
+import NotFoundCat from '../static/404cat.jpg';
 
 
-const Igmain = styled.div`
+const ErrorCatWrapper = styled.div`
     
     margin-top: 40px;
     display: flex;
@@ -14,37 +13,36 @@ const Igmain = styled.div`
 
 `;
 
-const Ercat = styled.div`
+const ErrorCat = styled.div`
 
     width: 100%;
     height: 800px;
-    background: url(${zlcat});
+    background: url(${NotFoundCat});
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
 `;
 
-const MyError = ({ statusCode }) => {
+
+const MyError = ({ statusCode}) => {
+  
   return (
     <div>
-      <Igmain>
-        <Ercat/>
-      </Igmain>
+      <ErrorCatWrapper>
+        <ErrorCat/>
+      </ErrorCatWrapper>
     </div>
   );
+
 };
 
-MyError.propTypes = {
-  statusCode: PropTypes.number,
-};
-
-MyError.defaultProps = {
-  statusCode: 400,
-};
 
 MyError.getInitialProps = async (context) => {
+  
   const statusCode = context.res ? context.res.statusCode : context.err ? context.err.statusCode : null;
-  return { statusCode };
+  return { statusCode};
+
 };
+
 
 export default MyError;
