@@ -13,6 +13,8 @@ class Mydocument extends Document {
     return {...page, helmet: Helmet.renderStatic(), styleTags};
 
   }
+
+  
   render() {
     const { htmlAttributes, bodyAttributes, ...helmet} = this.props.helmet;
     const htmlAttrs = htmlAttributes.toComponent();
