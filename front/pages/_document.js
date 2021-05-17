@@ -14,11 +14,13 @@ class Mydocument extends Document {
 
   }
 
-  
   render() {
+
     const { htmlAttributes, bodyAttributes, ...helmet} = this.props.helmet;
     const htmlAttrs = htmlAttributes.toComponent();
     const bodyAttrs = bodyAttributes.toComponent();
+
+    
     return (
       <html {...htmlAttrs}>
         <head>
@@ -34,6 +36,7 @@ class Mydocument extends Document {
         </body>
       </html>
     );
+
   }
 
 }
