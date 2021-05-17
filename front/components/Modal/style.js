@@ -66,7 +66,7 @@ export const DomainName = styled.div`
 
 `;
 
-export const ExitButtonWrapper = styled.div`
+export const EmergencyExit = styled.div`
     
   display: flex;
   width: 100%;
@@ -181,3 +181,4 @@ export const ExitButton = styled.button`
   }
 
 `;
+
