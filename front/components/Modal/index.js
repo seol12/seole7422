@@ -1,10 +1,10 @@
 import React from 'react';
-import { ModalBackGround, ModalWrapper, ModalHead, DomainName, Exit, ModalBody, 
+import { ModalBackGround, ModalWrapper, ModalHead, DomainName, EmergencyExit, ModalBody, 
 Question, ButtonBar, RemoveButtonWrapper, ExitButtonWrapper, RemoveButton, 
 ExitButton} from './style';
 
 
-const Modal = ({ post, onClose, onSub}) => {
+const Modal = ({ onClose, onSub}) => {
     
   return (
     <>
@@ -12,7 +12,7 @@ const Modal = ({ post, onClose, onSub}) => {
         <ModalWrapper>
           <ModalHead>
             <DomainName><p>Seol Cat</p></DomainName>
-            <Exit><button onClick={onClose}>X</button></Exit>
+            <EmergencyExit><button onClick={onClose}>X</button></EmergencyExit>
           </ModalHead>
           <ModalBody>
             <Question><p>정말 삭제할 거에요?</p></Question>
