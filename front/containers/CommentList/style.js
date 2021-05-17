@@ -8,7 +8,7 @@ export const CommentWrapper = styled.li`
   display: flex;
   border-bottom: 2px solid #e8e8e8;
   list-style-type: none;
-  border-collapse:collapse;
+  border-collapse: collapse;
   
 `;
 
@@ -59,6 +59,7 @@ export const CreationDate = styled.div`
 
   color: #000000;
   opacity: 65%;
+  
   & p {
 
     padding-left: 8px;
@@ -100,7 +101,7 @@ export const RemoveCommentButton = styled.button`
   border: none;
   font-size: 14px;
   
-  &:hover ${RemoveCommentButton}{
+  &:hover ${RemoveCommentButton} {
     
     border: 1px solid white;
     opacity: 90%;
