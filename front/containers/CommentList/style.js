@@ -59,7 +59,7 @@ export const CreationDate = styled.div`
 
   color: #000000;
   opacity: 65%;
-  
+
   & p {
 
     padding-left: 8px;
@@ -109,3 +109,4 @@ export const RemoveCommentButton = styled.button`
   }
 
 `;
+
