@@ -66,24 +66,24 @@ export const DomainName = styled.div`
 
 `;
 
-export const Exit = styled.div`
+export const ExitButtonWrapper = styled.div`
     
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 
-    & button {
+  & button {
 
-      border: none;
-      font-size: 20px;
-      padding: 10px;
-      padding-top: 8px;
-      padding-right: 20px;
-      font-weight: bold;
-      color: white;
-      background: none;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    padding-top: 8px;
+    padding-right: 20px;
+    font-weight: bold;
+    color: white;
+    background: none;
 
-    }
+  }
 
 `;
 
@@ -153,7 +153,7 @@ export const RemoveButton = styled.button`
   border: none;
   font-size: 14px;
   
-  &:hover ${RemoveButton}{
+  &:hover ${RemoveButton} {
         
     border: 1px solid white;
     opacity: 90%;
@@ -173,7 +173,7 @@ export const ExitButton = styled.button`
   border: none;
   font-size: 14px;
   
-  &:hover ${ExitButton}{
+  &:hover ${ExitButton} {
         
     border: 1px solid white;
     opacity: 90%;
