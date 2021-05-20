@@ -1,5 +1,6 @@
 import produce from 'immer';
 
+
 export const initialState = {
   isLoggingOut: false, 
   isLoggingIn: false, 
@@ -13,6 +14,7 @@ export const initialState = {
   hasMoreFollower: false,
   hasMoreFollowing: false,
 };
+
 
 export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
@@ -30,15 +32,15 @@ export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
 export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
 export const LOG_OUT_FAILURE = 'LOG_OUT_FAILURE';
 
-
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
 export const SIGN_UP_CHECKED = 'SIGN_UP_CHECKED';
 
 
 export default (state = initialState, action) => {
+
   return produce(state, (draft) => {
-    switch (action.type) {
+    switch(action.type) {
       case LOG_IN_REQUEST: {
         draft.isLoggingIn = true;
         draft.logInErrorReason = '';
@@ -65,7 +67,7 @@ export default (state = initialState, action) => {
         draft.me = null;
         break;
       }
-      case SIGN_UP_CHECKED : {
+      case SIGN_UP_CHECKED: {
         draft.signUpChecked = null;
         draft.signUpErrorReason = null;        
         break;
@@ -92,7 +94,7 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_USER_SUCCESS: {
-        if (action.me) {
+        if(action.me) {
           draft.me = action.data;
           break;
         }
@@ -103,11 +105,13 @@ export default (state = initialState, action) => {
         break;
       }
       case ADD_POST_TO_ME: {
-        draft.me.Posts.unshift({ id: action.data });
+        draft.me.Posts.unshift({ id: action.data});
         break;
       }
       case REMOVE_POST_OF_ME: {
-        const index = draft.me.Posts.findIndex(v => v.id === action.data);
+        const index = draft.me.Posts.findIndex((v) => {
+          return v.id === action.data
+        });
         draft.me.Posts.splice(index, 1);
         break;
       }
@@ -116,4 +120,5 @@ export default (state = initialState, action) => {
       }
     }
   });
+
 };
