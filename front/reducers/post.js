@@ -1,5 +1,6 @@
 import produce from 'immer';
 
+
 export const initialState = {
   mainPosts: [], 
   imagePaths: [], 
@@ -13,6 +14,7 @@ export const initialState = {
   commentAdded: false,
   singlePost: null,
 };
+
 
 export const LOAD_MAIN_POSTS_REQUEST = 'LOAD_MAIN_POSTS_REQUEST';
 export const LOAD_MAIN_POSTS_SUCCESS = 'LOAD_MAIN_POSTS_SUCCESS';
@@ -29,8 +31,6 @@ export const LOAD_USER_POSTS_FAILURE = 'LOAD_USER_POSTS_FAILURE';
 export const UPLOAD_IMAGES_REQUEST = 'UPLOAD_IMAGES_REQUEST';
 export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS';
 export const UPLOAD_IMAGES_FAILURE = 'UPLOAD_IMAGES_FAILURE';
-
-export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
@@ -64,16 +64,19 @@ export const REMOVE_COMMENT_REQUEST = 'REMOVE_COMMENT_REQUEST';
 export const REMOVE_COMMENT_SUCCESS = 'REMOVE_COMMENT_SUCCESS';
 export const REMOVE_COMMENT_FAILURE = 'REMOVE_COMMENT_FAILURE';
 
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
+
 
 export default (state = initialState, action) => {
+
   return produce(state, (draft) => {
-    switch (action.type) {
+    switch(action.type) {
       case UPLOAD_IMAGES_REQUEST: {
         break;
       }
       case UPLOAD_IMAGES_SUCCESS: {
-        action.data.forEach((p) => {
-          draft.imagePaths.push(p);
+        action.data.forEach((v) => {
+          draft.imagePaths.push(v);
         });
         break;
       }
@@ -81,7 +84,9 @@ export default (state = initialState, action) => {
         break;
       }
       case REMOVE_IMAGE: {
-        const index = draft.imagePaths.findIndex((v, i) => i === action.index);
+        const index = draft.imagePaths.findIndex((v, i) => { 
+          return i === action.index
+        });
         draft.imagePaths.splice(index, 1);
         break;
       }
@@ -110,7 +115,9 @@ export default (state = initialState, action) => {
         break;
       }
       case ADD_COMMENT_SUCCESS: {
-        const postIndex = draft.mainPosts.findIndex(v => v.id === action.data.postId);
+        const postIndex = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data.postId
+        });
         draft.mainPosts[postIndex].Comments.push(action.data.comment);
         draft.isAddingComment = false;
         draft.commentAdded = true;
@@ -122,7 +129,9 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_COMMENTS_SUCCESS: {
-        const postIndex = draft.mainPosts.findIndex(v => v.id === action.data.postId);
+        const postIndex = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data.postId
+        });
         draft.mainPosts[postIndex].Comments = action.data.comments;
         break;
       }
@@ -137,18 +146,20 @@ export default (state = initialState, action) => {
       case LOAD_MAIN_POSTS_SUCCESS:
       case LOAD_HASHTAG_POSTS_SUCCESS: {
         draft.pendingPost = false;
-        action.data.forEach((d) => {
-          draft.mainPosts.push(d);
+        action.data.forEach((v) => {
+          return draft.mainPosts.push(v);
         });
         draft.muchPost = action.data.length === 10;
         break;
       }
       case LOAD_USER_POSTS_SUCCESS: {
-        action.data.forEach((d) => {
-          draft.mainPosts.push(d);
+        action.data.forEach((v) => {
+          return draft.mainPosts.push(v);
         });
         draft.hasMorePost = action.data.length === 10;
-        draft.mainPosts.sort((p,c) => {return c.id - p.id });
+        draft.mainPosts.sort((p,c) => {
+          return c.id - p.id 
+        });
         break;
       }
       case LOAD_MAIN_POSTS_FAILURE:
@@ -160,8 +171,10 @@ export default (state = initialState, action) => {
         break;
       }
       case LIKE_POST_SUCCESS: {
-        const postIndex = draft.mainPosts.findIndex(v => v.id === action.data.postId);
-        draft.mainPosts[postIndex].Likers.unshift({ id: action.data.userId });
+        const postIndex = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data.postId
+        });
+        draft.mainPosts[postIndex].Likers.unshift({ id: action.data.userId});
         break;
       }
       case LIKE_POST_FAILURE: {
@@ -171,8 +184,12 @@ export default (state = initialState, action) => {
         break;
       }
       case UNLIKE_POST_SUCCESS: {
-        const postIndex = draft.mainPosts.findIndex(v => v.id === action.data.postId);
-        const likeIndex = draft.mainPosts[postIndex].Likers.findIndex(v => v.id === action.data.userId);
+        const postIndex = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data.postId
+        });
+        const likeIndex = draft.mainPosts[postIndex].Likers.findIndex((v) => {
+          return v.id === action.data.userId
+        });
         draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
         break;
       }
@@ -184,7 +201,9 @@ export default (state = initialState, action) => {
         break;
       }
       case REMOVE_POST_SUCCESS: {
-        const index = draft.mainPosts.findIndex(v => v.id === action.data);
+        const index = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data
+        });
         draft.mainPosts.splice(index, 1);
         break;
       }
@@ -195,16 +214,20 @@ export default (state = initialState, action) => {
         draft.mainPosts.unshift(action.data);
         break;
       }
-      case REMOVE_COMMENT_REQUEST:{
+      case REMOVE_COMMENT_REQUEST: {
         break;
       }
-      case REMOVE_COMMENT_SUCCESS:{
-        const postindex = draft.mainPosts.findIndex(v=> v.id === action.data.postId);
-        const coIndex = draft.mainPosts[postindex].Comments.findIndex(v => v.id === action.data.itemxid);
-         draft.mainPosts[postindex].Comments.splice(coIndex, 1);
+      case REMOVE_COMMENT_SUCCESS: {
+        const postindex = draft.mainPosts.findIndex((v) => {
+          return v.id === action.data.postId
+        });
+        const coIndex = draft.mainPosts[postindex].Comments.findIndex((v) => {
+          return v.id === action.data.itemxid
+        });
+        draft.mainPosts[postindex].Comments.splice(coIndex, 1);
         break;
       }
-      case REMOVE_COMMENT_FAILURE:{
+      case REMOVE_COMMENT_FAILURE: {
         break;
       }
       default: {
@@ -212,4 +235,5 @@ export default (state = initialState, action) => {
       }
     }
   });
+
 };
