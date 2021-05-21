@@ -302,7 +302,6 @@ function* watchUnlikePost() {
 
 }
 
-
 function removePostAPI(postId) {
 
   return axios.delete(`/post/${postId}`, {
@@ -369,8 +368,6 @@ function* watchLoadPost() {
 
 }
 
-
-
 function RemovecommentAPI(data) {
 
   return axios.delete(`/post/comment/${data.itemId}`, {
@@ -423,5 +420,5 @@ export default function* postSaga() {
     fork(watchLoadPost),
     fork(watchRemoveComment),
   ]);
-  
+
 }
