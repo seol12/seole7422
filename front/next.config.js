@@ -1,4 +1,5 @@
 const withBundelAnalyzer = require('@next/bundle-analyzer')({
+  
   enabled: process.env.ANALYZE === 'true',
   
 });
@@ -19,10 +20,10 @@ module.exports = withBundelAnalyzer({
     }
     config.module.rules.push({
       test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
-      use:[{
+      use: [{
         loader: "url-loader",
         options: {
-          limit:10000,
+          limit: 10000,
           fallback: "file-loader",
           name: "static/[name].[ext]",
           esModule: false,
