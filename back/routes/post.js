@@ -70,6 +70,12 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
         model: db.User,
         as: 'Likers',
         attributes: ['id'],
+      }, {
+        model: db.Comment,
+        include: [{
+          model: db.User,
+          attributes: ['id', 'nickname'],
+        }],
       }],
     });
     return res.json(fullPost);
@@ -101,6 +107,12 @@ router.get('/:id', async (req, res, next) => {
         through: 'Like',
         as: 'Likers',
         attributes:['id']
+      }, {
+        model: db.Comment,
+        include: [{
+          model: db.User,
+          attributes: ['id','nickname'],
+        }],
       }],
     });
     return res.json(post);
