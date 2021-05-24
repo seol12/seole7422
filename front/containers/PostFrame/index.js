@@ -4,7 +4,7 @@ import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nic
 CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PhotoImages, PostFooter, 
 LikeButtonWrapper, LikeIcon, CommentButtonWrapper, CommentIcon, ContainingNoData,} from './style';
 import { useSelector, useDispatch } from 'react-redux';
-import { LOAD_COMMENTS_REQUEST, UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
+import { UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
 import PostImages from '../../components/PostImages';
 import PostContent from '../../components/PostContent';
@@ -18,25 +18,13 @@ moment.locale('ko');
 
 const PostFrame = memo(({ post}) => {
 
-  const [ commentFormOpened, setCommentFormOpened] = useState(false);
+  const [ commentFormNotOpened, CommentFormOpened] = usePrevstateChanged(false);
   const [ PostModalon, OnTogglePostModal] = usePrevstateChanged(false);
   const id = useSelector(state => state.user.me && state.user.me.id);
   const dispatch = useDispatch();
   const liked = id && post.Likers && post.Likers.find((v) => {return v.id === id});
  
-    
-  const onToggleComment = useCallback(() => {
-    
-    setCommentFormOpened(prev => !prev);
-    if(!commentFormOpened) {
-      return dispatch({
-        type: LOAD_COMMENTS_REQUEST,
-        data: post.id,
-      });
-    }
-        
-  },[]);
-        
+      
   const onToggleLike = useCallback(() => {
   
     if(!id) {
@@ -53,6 +41,7 @@ const PostFrame = memo(({ post}) => {
         data: post.id,
       });
     }
+    
   },[id, post && post.id, liked]);
 
    
@@ -63,6 +52,7 @@ const PostFrame = memo(({ post}) => {
       data: userId,     
     })
     return OnTogglePostModal();
+
   },[]);
 
 
@@ -94,11 +84,11 @@ const PostFrame = memo(({ post}) => {
           <LikeIcon type="heart" key="heart" theme={liked ?'twoTone' :'outlined'} twoToneColor="#eb2f96" onClick={onToggleLike} />
         </LikeButtonWrapper>
         <CommentButtonWrapper>
-          <CommentIcon type="message" key="message" onClick={onToggleComment}/>
+          <CommentIcon type="message" key="message" onClick={CommentFormOpened}/>
           <div></div>
         </CommentButtonWrapper>
       </PostFooter>
-      {commentFormOpened && (
+      {commentFormNotOpened && (
         <>
           <CommentForm post={post}/>
           {post.Comments && post.Comments.length > 0 || ( 
