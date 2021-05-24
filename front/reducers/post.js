@@ -3,7 +3,8 @@ import produce from 'immer';
 
 export const initialState = {
   mainPosts: [], 
-  imagePaths: [], 
+  imagePaths: [],
+  userSinglePost: null,  
   addPostErrorReason: '', 
   isAddingPost: false,
   muchPost: true,
@@ -12,7 +13,6 @@ export const initialState = {
   isAddingComment: false,
   addCommentErrorReason: '',
   commentAdded: false,
-  singlePost: null,
 };
 
 
@@ -138,6 +138,7 @@ export default (state = initialState, action) => {
       case LOAD_MAIN_POSTS_REQUEST:
       case LOAD_HASHTAG_POSTS_REQUEST:
       case LOAD_USER_POSTS_REQUEST: {
+        draft.userSinglePost = null;
         draft.pendingPost = true;
         draft.mainPosts = !action.lastId ? [] : draft.mainPosts;
         draft.muchPost = action.lastId ? draft.muchPost : true;
@@ -210,8 +211,15 @@ export default (state = initialState, action) => {
       case REMOVE_POST_FAILURE: {
         break;
       }
+      case LOAD_POST_REQUEST : {
+        draft.userSinglePost = null;
+        break;
+      }
       case LOAD_POST_SUCCESS: {
-        draft.mainPosts.unshift(action.data);
+        draft.userSinglePost = action.data;
+        break;
+      }
+      case LOAD_POST_FAILURE: {
         break;
       }
       case REMOVE_COMMENT_REQUEST: {
