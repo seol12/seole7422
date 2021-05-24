@@ -127,31 +127,6 @@ router.delete('/:id', isLoggedIn, async (req, res, next) => {
 
 });
 
-router.get('/:id/comments', async (req, res, next) => {
-  
-  try {
-    const post = await db.Post.findOne({ where: { id: req.params.id}});
-    if(!post) {
-      return res.status(404).send('포스트가 존재하지 않습니다.');
-    }
-    const comments = await db.Comment.findAll({
-      where: {
-        PostId: req.params.id,
-      },
-      order: [['createdAt', 'ASC']],
-      include: [{
-        model: db.User,
-        attributes: ['id', 'nickname'],
-      }],
-    });
-    return res.json(comments);
-  }catch(e) {
-    console.error(e);
-    next(e);
-  }
-
-});
-
 router.post('/:id/comment', isLoggedIn, async (req, res, next) => { 
 
   try {
