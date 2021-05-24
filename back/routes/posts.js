@@ -27,6 +27,12 @@ router.get('/', async (req, res, next) => {
         through: 'Like',
         as: 'Likers',
         attributes: ['id'],
+      }, {
+        model: db.Comment,
+        include: [{
+          model: db.User,
+          attributes: ['id', 'nickname'],
+        }],
       }],
       order: [['createdAt', 'DESC']], 
       limit: parseInt(req.query.limit, 10),
