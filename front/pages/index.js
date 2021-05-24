@@ -58,7 +58,7 @@ const Home = () => {
 }
 
 
-Home.getInitialProps = async (context) => {
+Home.getInitialProps = async(context) => {
 
   context.store.dispatch({
     type: LOAD_MAIN_POSTS_REQUEST,
