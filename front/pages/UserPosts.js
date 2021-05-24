@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { LOAD_USER_POSTS_REQUEST } from '../reducers/post';
+import { useDispatch, useSelector} from 'react-redux';
+import { LOAD_USER_POSTS_REQUEST} from '../reducers/post';
 import PostFrame from '../containers/PostFrame';
 
 const UserPosts = () => {
@@ -10,14 +10,15 @@ const UserPosts = () => {
 
 
   return (
-    <div>
-      {mainPosts.map(v => { 
+    <>
+      {mainPosts.map((v) => { 
         return (
           <PostFrame key={+v.id} post={v} />
         );
       })}
-    </div>
+    </>
   );
+
 };
 
 
@@ -29,6 +30,7 @@ UserPosts.getInitialProps = async (context) => {
     data: id,
   });
   return { id };
+
 };
 
 
