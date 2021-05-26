@@ -68,6 +68,10 @@ export const Nickname = styled.div`
 
   width: 70px;
   height: 120px;
+
+  &:hover ${Nickname} {
+    text-decoration: underline;
+  }
   
 `;
 
