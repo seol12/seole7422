@@ -1,6 +1,7 @@
 import { Card, Icon, Avatar} from 'antd';
 import styled from 'styled-components';
 
+
 export const PostWrapper = styled.div`
   
   margin-top: 10px;
@@ -36,6 +37,12 @@ export const AvataContent = styled(Avatar)`
   font-weight: bold;
   background: #20232a;
   font-size: 20px;
+  
+  &:hover ${AvataContent} {
+    border: 1px solid white;
+    opacity: 90%;
+  }
+
 
 `;
 
@@ -49,12 +56,10 @@ export const NicknameWrapper = styled.div`
   padding-left: 8px;
   
   & a {
-    
     font-size: 16px;
     font-weight: bold;
     color: black;
     opacity: 0.65;
-  
   }
 
 `;
@@ -96,11 +101,9 @@ export const RemoveCommentButton = styled.button`
   border: none;
   font-size: 14px;
   
-  &:hover ${RemoveCommentButton}{
-      
-      border: 1px solid white;
-      opacity: 90%;
-
+  &:hover ${RemoveCommentButton} {  
+    border: 1px solid white;
+    opacity: 90%;
   }
 
 `;
