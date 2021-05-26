@@ -43,7 +43,6 @@ export const AvataContent = styled(Avatar)`
     opacity: 90%;
   }
 
-
 `;
 
 export const NicknameWrapper = styled.div`
@@ -66,8 +65,8 @@ export const NicknameWrapper = styled.div`
 
 export const Nickname = styled.div`
 
-  width: 70px;
-  height: 120px;
+  display: inline-block;
+  padding-right: 8px;
 
   &:hover ${Nickname} {
     text-decoration: underline;
@@ -86,7 +85,7 @@ export const CreationDate = styled.div`
 export const RemovePostWrapper = styled.div`
 
   display: flex;
-  width: 100%;
+  width: 60%;
   padding: 20px;
   padding-top: 24px;
   justify-content: flex-end;
