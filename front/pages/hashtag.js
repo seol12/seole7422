@@ -22,7 +22,7 @@ const Hashtag = ({ tag}) => {
       }
     }
 
-  },[ hasMorePost, mainPosts.length]);
+  },[hasMorePost, mainPosts.length]);
 
   useEffect(() => {
 
