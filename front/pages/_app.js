@@ -85,6 +85,7 @@ SeoleCat.getInitialProps = async (context) => {
     pageProps = await Component.getInitialProps(ctx) || {};
   }
   return { pageProps };
+
 };
 
 const configureStore = (initialState, options) => {
@@ -100,6 +101,7 @@ const configureStore = (initialState, options) => {
   const store = createStore(reducer, initialState, enhancer);
   store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
+  
 }
 
 
