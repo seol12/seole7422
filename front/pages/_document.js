@@ -11,11 +11,9 @@ class Mydocument extends Document {
     const page = context.renderPage((App) => (props) => sheet.collectStyles(  <App {...props}/>));
     const styleTags = sheet.getStyleElement();
     return {...page, helmet: Helmet.renderStatic(), styleTags};
-
   }
 
   render() {
-
     const { htmlAttributes, bodyAttributes, ...helmet} = this.props.helmet;
     const htmlAttrs = htmlAttributes.toComponent();
     const bodyAttrs = bodyAttributes.toComponent();
@@ -36,7 +34,6 @@ class Mydocument extends Document {
         </body>
       </html>
     );
-
   }
 
 }
