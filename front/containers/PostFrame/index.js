@@ -1,8 +1,9 @@
 import React, { useState, useCallback, memo,} from 'react';
 import { Card} from 'antd';
 import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nickname, 
-CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PhotoImages, PostFooter, 
-LikeButtonWrapper, LikeIcon, CommentButtonWrapper, CommentIcon, ContainingNoData,} from './style';
+CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PostUrlWrapper, PostUrlLink, 
+PostUrlButton, PhotoImages, PostFooter, LikeButtonWrapper, LikeIcon, CommentButtonWrapper, 
+CommentIcon, ContainingNoData,} from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import { UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
@@ -75,6 +76,12 @@ const PostFrame = memo(({ post}) => {
         }
       </PostHead>
       <PostBody>
+        <PostUrlWrapper>
+          <Link href={{ pathname: '/post', query: { id: post.id}}} as={`/post/${post.id}`}>
+            <PostUrlLink>{`http://www.seolecat.com/post/${post.id}`}</PostUrlLink>
+            <PostUrlButton>복사</PostUrlButton>
+          </Link>
+        </PostUrlWrapper>
         <PhotoImages cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
         <Card.Meta description={<PostContent postData={post.content} />} />
         </PhotoImages>
