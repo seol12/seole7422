@@ -44,7 +44,6 @@ const PostFrame = memo(({ post}) => {
     }
     
   },[id, post && post.id, liked]);
-
    
   const onRemovePost = useCallback((userId) => () => {
   
@@ -53,6 +52,19 @@ const PostFrame = memo(({ post}) => {
       data: userId,     
     })
     return OnTogglePostModal();
+
+  },[]);
+
+  const copyClipBoard = useCallback((copyurl) => () => {
+
+    const copytext = document.createElement('textarea');
+    document.body.appendChild(copytext);
+    copytext.value = copyurl;
+    copytext.select();
+    copytext.setSelectionRange(0, 9999);
+    document.execCommand('copy');
+    document.body.removeChild(copytext);
+    alert('복사되었습니다!');
 
   },[]);
 
@@ -79,8 +91,8 @@ const PostFrame = memo(({ post}) => {
         <PostUrlWrapper>
           <Link href={{ pathname: '/post', query: { id: post.id}}} as={`/post/${post.id}`}>
             <PostUrlLink>{`http://www.seolecat.com/post/${post.id}`}</PostUrlLink>
-            <PostUrlButton>복사</PostUrlButton>
           </Link>
+          <PostUrlButton onClick={copyClipBoard(`http://www.seolecat.com/post/${post.id}`)}>복사</PostUrlButton>
         </PostUrlWrapper>
         <PhotoImages cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
         <Card.Meta description={<PostContent postData={post.content} />} />
