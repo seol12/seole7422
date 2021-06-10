@@ -22,9 +22,9 @@ export const PostHead = styled.div`
 export const AvataWrapper = styled.div`
 
   width: 78px;
-  height: 50px;
+  height: 72px;
   padding: 10px;
-  margin-top: 10px;
+  border-bottom: 2px solid #e8e8e8;
 
 `;
 
@@ -47,12 +47,13 @@ export const AvataContent = styled(Avatar)`
 
 export const NicknameWrapper = styled.div`
   
-  margin-top: 10px;
+  margin-top: 4px;
   display: flex;
   width: 100%;
-  height: 20px;
+  height: 68px;
   padding: 20px;
   padding-left: 8px;
+  border-bottom: 2px solid #e8e8e8;
   
   & a {
     font-size: 16px;
@@ -87,15 +88,16 @@ export const RemovePostWrapper = styled.div`
   display: flex;
   width: 60%;
   padding: 20px;
-  padding-top: 24px;
+  padding-right: 8px;
   justify-content: flex-end;
-  height: 40px;
+  height: 72px;
+  border-bottom: 2px solid #e8e8e8;
 
 `;
 
 export const RemoveCommentButton = styled.button`
 
-  width: 50px;
+  width: 60px;
   height: 30px;
   background-color: #20232a;
   color: white;
@@ -113,9 +115,52 @@ export const RemoveCommentButton = styled.button`
 
 export const PostBody = styled.div`
 
-  margin-top: 10px;
+  margin-top: 2px;
   align-items: center;
   width: 100%;
+
+`;
+
+export const PostUrlWrapper = styled.div`
+
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 6px;
+  margin-bottom: 14px;
+
+`;
+
+export const PostUrlLink = styled.a`
+
+  color: #aaa;
+  font-family: verdana;
+  font-size: 12px;
+  padding-top: 2px;
+  padding-right: 4px;
+
+  &:hover ${PostUrlLink} {
+    text-decoration: underline;
+    color: #aaa;
+  }
+
+`;
+
+export const PostUrlButton = styled.button`
+
+  width: 36px;
+  height: 20px;
+  border: none;
+  background-color: #20232a;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  font-size: 11px;
+
+  &:hover ${PostUrlButton} {
+    border: 1px solid white;
+    opacity: 90%;
+  }
 
 `;
 
@@ -166,7 +211,8 @@ export const CommentIcon = styled(Icon)`
 
 export const ContainingNoData = styled.p`
 
-  color: rgba(0, 0, 0, 0.45);
+  color: #000000;
+  opacity: 0.45;
   text-align: center;
   font-size: 16px;
   font-weight: bold;
