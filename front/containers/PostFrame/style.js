@@ -127,6 +127,7 @@ export const PostUrlWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 6px;
+  margin-top: 6px;
   margin-bottom: 14px;
 
 `;
@@ -148,7 +149,7 @@ export const PostUrlLink = styled.a`
 
 export const PostUrlButton = styled.button`
 
-  width: 40px;
+  width: 46px;
   height: 20px;
   border: none;
   background-color: #20232a;
