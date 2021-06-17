@@ -148,7 +148,7 @@ export const PostUrlLink = styled.a`
 
 export const PostUrlButton = styled.button`
 
-  width: 36px;
+  width: 40px;
   height: 20px;
   border: none;
   background-color: #20232a;
