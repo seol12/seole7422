@@ -3,7 +3,7 @@ import { Card} from 'antd';
 import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nickname, 
 CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PostUrlWrapper, PostUrlLink, 
 PostUrlButton, PhotoImages, PostFooter, LikeButtonWrapper, LikeIcon, CommentButtonWrapper, 
-CommentIcon, ContainingNoData,} from './style';
+CommentIcon, ContainingNoData, BorderLine} from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import { UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
@@ -14,6 +14,7 @@ import CommentForm from '../CommentForm';
 import CommentList from '../CommentList';
 import { usePrevstateChanged} from '../../customhooks';
 import Modal from '../../components/Modal';
+import ViewUserPosts from '../../components/ViewUserPosts';
 moment.locale('ko');
 
 
@@ -21,11 +22,29 @@ const PostFrame = memo(({ post}) => {
 
   const [ commentFormNotOpened, CommentFormOpened] = usePrevstateChanged(false);
   const [ PostModalon, OnTogglePostModal] = usePrevstateChanged(false);
+  const [ postToggleOn, setPostToggleOn] = useState(false);
   const id = useSelector(state => state.user.me && state.user.me.id);
   const dispatch = useDispatch();
   const liked = id && post.Likers && post.Likers.find((v) => {return v.id === id});
+  const toggleRef = useRef();
  
-      
+  
+  useEffect(() => {
+
+    const handleClickOutside = (e) => {
+      if (postToggleOn && (toggleRef.current && !toggleRef.current.contains(e.target))) {
+        e.stopPropagation();
+        setPostToggleOn(false);
+      }
+      e.stopPropagation();
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+
+  }, [postToggleOn]);
+
   const onToggleLike = useCallback(() => {
   
     if(!id) {
@@ -68,6 +87,12 @@ const PostFrame = memo(({ post}) => {
 
   },[]);
 
+  const userPostModalonoff = useCallback(() => {
+    
+    setPostToggleOn(true);
+  
+  },[]);
+
 
   return (
     <PostWrapper>
@@ -76,8 +101,9 @@ const PostFrame = memo(({ post}) => {
           <Link href={{ pathname: '/UserPosts', query: { id: post.User.nickname } }} as={`/UserPosts/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
         </AvataWrapper>
         <NicknameWrapper>
-          <Link href={{ pathname: '/post', query : { id: post.id}}} as={`/post/${post.id}`} ><Nickname><a>{post.User.nickname}</a></Nickname></Link>
-          <CreationDate> {moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
+          <Nickname><p onClick={userPostModalonoff}>{post.User.nickname}</p></Nickname>
+          <CreationDate>{moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
+          {postToggleOn && <ViewUserPosts ref={toggleRef} post={post} />}
         </NicknameWrapper> 
         {id && post.UserId === id
         ?<RemovePostWrapper>
@@ -87,6 +113,7 @@ const PostFrame = memo(({ post}) => {
         :<div></div>
         }
       </PostHead>
+      <BorderLine/>
       <PostBody>
         <PostUrlWrapper>
           <Link href={{ pathname: '/post', query: { id: post.id}}} as={`/post/${post.id}`}>
