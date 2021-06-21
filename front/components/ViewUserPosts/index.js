@@ -9,7 +9,7 @@ const ViewUserPosts = ({post}, toggleRef) => {
     <>
     <ToggleWrapper ref={toggleRef}>
       <UserPosts>
-        <span><Link href={{pathname: '/UserPosts', query: {id: post.User.id} }} as={`/UserPosts/${post.User.id}`}><a>작성 글 보기</a></Link></span>
+        <span><Link href={{pathname: '/UserPosts', query: {id: post.User.nickname} }} as={`/UserPosts/${post.User.nickname}`}><a>작성 글 보기</a></Link></span>
       </UserPosts>    
     </ToggleWrapper>
     </>
