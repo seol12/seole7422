@@ -1,4 +1,5 @@
 import React, { forwardRef} from 'react';
+import { ToggleWrapper, UserPosts} from './style';
 import Link from 'next/link';
 
 
