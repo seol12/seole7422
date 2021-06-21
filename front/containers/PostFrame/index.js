@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo,} from 'react';
+import React, { useState, useCallback, memo, useRef} from 'react';
 import { Card} from 'antd';
 import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nickname, 
 CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PostUrlWrapper, PostUrlLink, 
