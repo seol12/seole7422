@@ -44,26 +44,33 @@ export const AvataContent = styled(Avatar)`
 
 `;
 
-export const NicknameWrapper = styled.div`
+export const ContentWrapper = styled.div`
   
-  margin-top: 4px;
+  margin-top: 18px;
   display: flex;
   flex-wrap: wrap;
-  width: 300px;
-  height: 68px;
-  padding: 20px;
-  padding-left: 8px;
+  width: 260px;
   
+`;
+
+
+
+export const Contents = styled.div`
+ 
+  margin-top: 4px;
+  padding-left: 2px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 844px) {
+    width: 278px;
+    padding-right: 4px;
+  }
+
   & a {
     font-size: 14px;
     font-weight: bold;
     color: black;
     opacity: 0.65;
-  }
-  
-  @media only screen and (max-width: 844px) {
-    width: 278px;
-    padding-right: 4px;
   }
 
 `;
@@ -89,18 +96,20 @@ export const Nickname = styled.div`
 `;
 
 export const CreationDate = styled.div`
-  
-  margin-left: 6px;
-  margin-top: 2px;
+
+  display: inline;
+  margin-top: 3px;
+  color: #000000;
+  opacity: 65%;
   font-size: 14px;
+  cursor: pointer;
 
 `;
 
 export const RemovePostWrapper = styled.div`
 
   display: flex;
-  width: 58%;
-  margin-left: 8px;
+  width: 70%;
   padding: 20px;
   padding-right: 6px;
   justify-content: flex-end;
@@ -110,14 +119,14 @@ export const RemovePostWrapper = styled.div`
 
 export const RemoveCommentButton = styled.button`
 
-  width: 60px;
-  height: 30px;
+  width: 40px;
+  height: 20px;
   background-color: #20232a;
   color: white;
   font-weight: bold;
   border-radius: 20px;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   
   &:hover ${RemoveCommentButton} {  
     border: 1px solid white;
