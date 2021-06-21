@@ -2,7 +2,7 @@ import React, { forwardRef} from 'react';
 import Link from 'next/link';
 
 
-const ViewUserPosts = () => {
+const ViewUserPosts = ({post}, toggleRef) => {
 
   return (
     <>
