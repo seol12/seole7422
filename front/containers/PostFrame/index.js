@@ -1,9 +1,9 @@
 import React, { useState, useCallback, memo, useRef, useEffect} from 'react';
 import { Card} from 'antd';
-import { PostWrapper, PostHead, AvataWrapper, AvataContent, NicknameWrapper, Nickname, 
-CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PostUrlWrapper, PostUrlLink, 
-PostUrlButton, PhotoImages, PostFooter, LikeButtonWrapper, LikeIcon, CommentButtonWrapper, 
-CommentIcon, ContainingNoData, BorderLine} from './style';
+import { PostWrapper, PostHead, AvataWrapper, AvataContent, ContentWrapper, Contents, 
+Nickname, CreationDate, RemovePostWrapper, RemoveCommentButton, PostBody, PostUrlWrapper, 
+PostUrlLink, PostUrlButton, PhotoImages, PostFooter, LikeButtonWrapper, LikeIcon, 
+CommentButtonWrapper, CommentIcon, ContainingNoData, BorderLine} from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import { UNLIKE_POST_REQUEST, LIKE_POST_REQUEST, REMOVE_POST_REQUEST} from '../../reducers/post';
 import Link from 'next/link';
@@ -100,11 +100,13 @@ const PostFrame = memo(({ post}) => {
         <AvataWrapper>
           <Link href={{ pathname: '/UserPosts', query: { id: post.User.nickname } }} as={`/UserPosts/${post.User.nickname}`}><a><AvataContent>{post.User.nickname[0]}</AvataContent></a></Link>
         </AvataWrapper>
-        <NicknameWrapper>
-          <Nickname><p onClick={userPostModalonoff}>{post.User.nickname}</p></Nickname>
-          <CreationDate>{moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
-          {postToggleOn && <ViewUserPosts ref={toggleRef} post={post} />}
-        </NicknameWrapper> 
+        <ContentWrapper>
+          <Contents>
+            <Nickname><p onClick={userPostModalonoff}>{post.User.nickname}</p></Nickname>
+            <CreationDate>{moment(post.createdAt).format('YYYY.MM.DD')}</CreationDate>
+            {postToggleOn && <ViewUserPosts ref={toggleRef} post={post} />}
+          </Contents>
+        </ContentWrapper>
         {id && post.UserId === id
         ?<RemovePostWrapper>
           <RemoveCommentButton onClick={OnTogglePostModal}>삭제</RemoveCommentButton>
