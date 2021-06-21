@@ -16,4 +16,5 @@ const ViewUserPosts = ({post}, toggleRef) => {
 
 }
 
+
 export default forwardRef(ViewUserPosts);
