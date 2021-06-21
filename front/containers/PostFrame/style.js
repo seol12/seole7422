@@ -15,7 +15,7 @@ export const PostHead = styled.div`
 
   display: flex;
   width: 100%;
-  height: 80px;
+  height: 70px;
 
 `;
 
@@ -24,7 +24,6 @@ export const AvataWrapper = styled.div`
   width: 78px;
   height: 72px;
   padding: 10px;
-  border-bottom: 2px solid #e8e8e8;
 
 `;
 
@@ -49,25 +48,39 @@ export const NicknameWrapper = styled.div`
   
   margin-top: 4px;
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
+  width: 300px;
   height: 68px;
   padding: 20px;
   padding-left: 8px;
-  border-bottom: 2px solid #e8e8e8;
   
   & a {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: black;
     opacity: 0.65;
+  }
+  
+  @media only screen and (max-width: 844px) {
+    width: 278px;
+    padding-right: 4px;
   }
 
 `;
 
 export const Nickname = styled.div`
 
+  margin-top: 2px;
   display: inline-block;
   padding-right: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  opacity: 0.65;
+
+  & p {
+    margin-bottom: 2px;
+  }
 
   &:hover ${Nickname} {
     text-decoration: underline;
@@ -86,12 +99,12 @@ export const CreationDate = styled.div`
 export const RemovePostWrapper = styled.div`
 
   display: flex;
-  width: 60%;
+  width: 58%;
+  margin-left: 8px;
   padding: 20px;
-  padding-right: 8px;
+  padding-right: 6px;
   justify-content: flex-end;
   height: 72px;
-  border-bottom: 2px solid #e8e8e8;
 
 `;
 
@@ -111,6 +124,13 @@ export const RemoveCommentButton = styled.button`
     opacity: 90%;
   }
 
+`;
+
+export const BorderLine = styled.div`
+
+  width: 100%;
+  border-bottom: 2px solid #e8e8e8;
+  
 `;
 
 export const PostBody = styled.div`
