@@ -72,7 +72,7 @@ const CommentList = ({ comments, post}) => {
               <Tooltip title={moment(comments.createdAt).format('YYYY.MM.DD HH:mm:ss')}>
                 <CreationDate>{moment(comments.createdAt).fromNow()}</CreationDate>
               </Tooltip>
-              {commentToggleon && <ViewUserPosts post={post} ref={commenttoggleref}/>}
+              {commentToggleon && <ViewUserPosts post={comments} ref={commenttoggleref}/>}
             </NicknameWrapper>
           </ContentWrapper>
           {id && comments.User.id === id                
