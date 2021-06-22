@@ -5,7 +5,7 @@ export const ToggleWrapper = styled.div`
 
   position: relative;
   margin-left: 22px;
-  width: 130px;
+  width: 90px;
   height: 28px;
   border: 2px solid gray;
   background-color: #20232a;
