@@ -1,124 +1,100 @@
 import styled from 'styled-components';
-import { Row} from 'antd';
 
 
-export const Headers = styled.div`
+export const LayoutWrapper = styled.div`
 
-    display: flex;
-    width: 100%;
-    height: 70px;
-    background : #20232a;
-
-`;
-
-
-export const HeaderNv = styled(Row)`
-
-    display: flex;
-    width: 100%;
-    margin-left: 40px;
-    margin-right: 40px;
-
-    @media only screen and (max-width: 600px) {
-    
-        margin-left: 0 auto;
-        margin-right: 40px;
-    
-    }
-  
-    @media only screen and (max-width: 400px) {
-  
-        margin-left: 4px;
-        margin-right: 0px;
-    
-    }
-  
-    @media only screen and (max-width: 420px) {
-  
-        margin-left: 4px;
-        margin-right: 0px;
-    
-    }
-`;
-
-export const MainCat = styled(Row)`
-
-    width: 170px;
-    height: 68px;
-    line-height: 40px;
-    padding: 10px;
-    order: 1;
-    flex-grow: 11;
-    flex-shrink: 2;
-
-    @media only screen and (max-width: 400px) {
-        
-        width: 200px;
-        margin-left: 0 auto;
-        flex-grow: 9;
-    
-    }
-
-    @media only screen and (max-width: 420px) {
-
-        width: 200px;
-        margin-left: 0 auto;
-        flex-grow: 9;
-
-    }
+  display: flex;
+  width: 100%;
+  height: 64px;
+  background: #20232a;
 
 `;
 
-export const LoginCat = styled(Row)`
+export const TittleWrapper = styled.div`
 
-    width: 115px;
-    height: 68px;
-    line-height: 40px;
-    padding: 12px;
-    order: 2;
-    flex-grow: 1;
-    text-align: center;
-
-`;
-
-export const SignupCat =  styled(Row)`
-
-    width: 120px;
-    height: 68px;
-    line-height: 40px;
-    padding: 12px;
-    order: 3;
-    flex-grow: 2;
-    text-align: center;
-
-`;
-
-export const MainpageHL = styled.a`
+  width: 50%;
+  padding-top: 4px;
  
-    color: white;
-    font-size: 35px;
-    font-weight: bold;
+  @media only screen and (max-width: 520px) {
+    padding-top: 10px;
+  }
 
-    @media only screen and (max-width: 360px) {
-        
-        font-size: 30px;
+`;
+
+export const MenuBar = styled.div`
+
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
   
-    }
+`;
+
+export const LoginLogoutWrapper = styled.div`
+
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 14px;
+  padding-right: 10px;
+
+  @media only screen and (max-width: 520px) {
+    padding-top: 22px;        
+  }
 
 `;
 
-export const LoginoutHL = styled.a`
+export const EmptyBox = styled.div`
 
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+  width: 12%;
+   
+`;
+
+export const SignupWrapper =  styled.div`
+
+  width: 48%;
+  display: flex;
+  padding-top: 14px;
+
+  @media only screen and (max-width: 520px) {
+    padding-top: 22px;
+  }
 
 `;
 
-export const SignupHL = styled.a`
+export const Tittle = styled.a`
+ 
+  color: white;
+  padding-top: 2%;
+  padding-left: 4%;
+  font-size: 2rem;
+  font-weight: bold;
+    
+  @media only screen and (max-width: 520px) {
+    font-size: 1.75rem;
+  }
 
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+`;
+
+export const LoginLogout = styled.a`
+
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+
+  @media only screen and (max-width: 520px) {
+    font-size: 1rem;
+  }
+
+`;
+
+export const SignUp = styled.a`
+
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+
+  @media only screen and (max-width: 520px) {
+    font-size: 1rem;
+  }
 
 `;
