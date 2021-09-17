@@ -23,8 +23,13 @@ router.post('/', async (req, res, next) => {
         userId: req.body.userId,
       },
     });
-    if(exUser) {
-      return res.status(403).send('이미 사용중인 아이디입니다.');
+    const exNickname = await db.User.findOne({
+      where: {
+        nickname: req.body.nickname,
+      }
+    });
+    if(exUser || exNickname) {
+      return res.status(403).send('이미 사용 중인 아이디거나 닉네임입니다.');
     }
     const hashedPassword = await bcrypt.hash(req.body.password, 12); 
     const newUser = await db.User.create({
