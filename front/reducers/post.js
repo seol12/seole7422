@@ -20,10 +20,6 @@ export const LOAD_MAIN_POSTS_REQUEST = 'LOAD_MAIN_POSTS_REQUEST';
 export const LOAD_MAIN_POSTS_SUCCESS = 'LOAD_MAIN_POSTS_SUCCESS';
 export const LOAD_MAIN_POSTS_FAILURE = 'LOAD_MAIN_POSTS_FAILURE';
 
-export const LOAD_HASHTAG_POSTS_REQUEST = 'LOAD_HASHTAG_POSTS_REQUEST';
-export const LOAD_HASHTAG_POSTS_SUCCESS = 'LOAD_HASHTAG_POSTS_SUCCESS';
-export const LOAD_HASHTAG_POSTS_FAILURE = 'LOAD_HASHTAG_POSTS_FAILURE';
-
 export const LOAD_USER_POSTS_REQUEST = 'LOAD_USER_POSTS_REQUEST';
 export const LOAD_USER_POSTS_SUCCESS = 'LOAD_USER_POSTS_SUCCESS';
 export const LOAD_USER_POSTS_FAILURE = 'LOAD_USER_POSTS_FAILURE';
@@ -136,7 +132,6 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_MAIN_POSTS_REQUEST:
-      case LOAD_HASHTAG_POSTS_REQUEST:
       case LOAD_USER_POSTS_REQUEST: {
         draft.userSinglePost = null;
         draft.pendingPost = true;
@@ -144,8 +139,7 @@ export default (state = initialState, action) => {
         draft.muchPost = action.lastId ? draft.muchPost : true;
         break;
       }
-      case LOAD_MAIN_POSTS_SUCCESS:
-      case LOAD_HASHTAG_POSTS_SUCCESS: {
+      case LOAD_MAIN_POSTS_SUCCESS: {
         draft.pendingPost = false;
         action.data.forEach((v) => {
           return draft.mainPosts.push(v);
@@ -164,7 +158,6 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_MAIN_POSTS_FAILURE:
-      case LOAD_HASHTAG_POSTS_FAILURE:
       case LOAD_USER_POSTS_FAILURE: {
         break;
       }
