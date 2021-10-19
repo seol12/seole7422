@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const VideoWrap = styled.div`
+export const VideoWrapper = styled.div`
   
   position: relative; 
   height: 0; 
@@ -11,7 +11,7 @@ export const VideoWrap = styled.div`
 
 `;
 
-export const Videoiframe = styled.iframe`
+export const Video = styled.iframe`
 
   position: absolute; 
   width: 100%; 
