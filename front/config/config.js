@@ -1,4 +1,4 @@
-const BackendServerPort = process.env.NODE_ENV === 'production' ? 'http://seolecat.com:1029' : 'http://localhost:3065';
+const BackendServerPort = process.env.NODE_ENV === 'production' ? 'http://seolcat.com:1029' : 'http://localhost:1228';
 
 
 export { BackendServerPort};
