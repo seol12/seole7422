@@ -119,9 +119,9 @@ const PostFrame = memo(({ post}) => {
       <PostBody>
         <PostUrlWrapper>
           <Link href={{ pathname: '/post', query: { id: post.id}}} as={`/post/${post.id}`}>
-            <PostUrlLink>{`http://www.seolecat.com/post/${post.id}`}</PostUrlLink>
+            <PostUrlLink>{`http://www.seolcat.com/post/${post.id}`}</PostUrlLink>
           </Link>
-          <PostUrlButton onClick={copyClipBoard(`http://www.seolecat.com/post/${post.id}`)}>복사</PostUrlButton>
+          <PostUrlButton onClick={copyClipBoard(`http://www.seolcat.com/post/${post.id}`)}>복사</PostUrlButton>
         </PostUrlWrapper>
         <PhotoImages cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}>
         <Card.Meta description={<PostContent postData={post.content} />} />
