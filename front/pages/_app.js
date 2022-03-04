@@ -19,7 +19,7 @@ const SeoleCat = ({ Component, store, pageProps}) => {
     <Container>
       <Provider store={store}>
       <Helmet
-        title="seolecat"
+        title="seolcat"
         htmlAttributes={{lang: 'ko'}}
         meta={[{
           charSet: "UTF-8",
@@ -31,10 +31,10 @@ const SeoleCat = ({ Component, store, pageProps}) => {
             content: 'IE=edge',
           }, {
             name: 'description', 
-            content: 'seolecat',
+            content: 'seolcat',
           }, {
             name: 'og:description',
-            content: 'seolecat',
+            content: 'seolcat',
           }, {
             property: 'og:type',
             content: 'website',
@@ -43,7 +43,7 @@ const SeoleCat = ({ Component, store, pageProps}) => {
             content: 'seolcat',
           }, {
             property: 'og:image',
-            content: 'http://seolecat.com/favicon.ico', 
+            content: 'http://seolcat.com/favicon.ico', 
         }]}
         link={[{
           rel: 'shortcut icon', href: '/favicon.ico',
