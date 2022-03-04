@@ -26,7 +26,7 @@ if(prod) {
   app.use(helmet());
   app.use(morgan('combined'));
   app.use(cors({
-    origin: ['http://seolecat.com','http://www.seolecat.com'],
+    origin: ['http://seolcat.com','http://www.seolcat.com'],
     credentials: true,
   }));
 }else { 
@@ -48,7 +48,7 @@ app.use(expressSession({
   cookie: {
     httpOnly: true,
     secure: false, 
-    domain: prod && '.seolecat.com',
+    domain: prod && '.seolcat.com',
   },
   name: 'didhddl',
 }));
@@ -60,6 +60,6 @@ app.use('/api/posts', postsAPIRouter);
 app.use('/api/hashtag', hashtagAPIRouter);
 
 
-app.listen(prod ? process.env.PORT : 3065, () => {
-  console.log(`server is running on http://localhost:3065${process.env.PORT}`);
+app.listen(prod ? process.env.PORT : 1228, () => {
+  console.log(`앙칼진 고양이 같은 서버 http://localhost:1228${process.env.PORT}`);
 });
