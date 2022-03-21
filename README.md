@@ -68,4 +68,4 @@
 
 ## 배포사이트
 
-  ### **www.seolecat.com**
+  ### **www.seolcat.com**
