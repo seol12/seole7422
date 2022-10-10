@@ -12,7 +12,6 @@ const db = require('./models');
 const userAPIRouter = require('./routes/user');
 const postAPIRouter = require('./routes/post');
 const postsAPIRouter = require('./routes/posts');
-const hashtagAPIRouter = require('./routes/hashtag');
 
 
 const prod = process.env.NODE_ENV === 'production';
@@ -57,7 +56,6 @@ app.use(passport.session());
 app.use('/api/user', userAPIRouter);
 app.use('/api/post', postAPIRouter);
 app.use('/api/posts', postsAPIRouter);
-app.use('/api/hashtag', hashtagAPIRouter);
 
 
 app.listen(prod ? process.env.PORT : 1228, () => {
