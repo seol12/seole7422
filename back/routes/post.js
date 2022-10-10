@@ -33,21 +33,10 @@ const upload = multer({
 router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { 
   
   try {
-    const hashtags = req.body.content.match(/#[^\s]+/g);
     const newPost = await db.Post.create({
       content: req.body.content, 
       UserId: req.user.id,
     });
-    if(hashtags) {
-      const result = await Promise.all(hashtags.map((v) => {
-        return db.Hashtag.findOrCreate({
-        where: { name: v.slice(1).toLowerCase()},
-      });
-    }));
-      await newPost.addHashtags(result.map((v) => { 
-        return v[0];
-      }));
-    }
     if(req.body.image) { 
       if(Array.isArray(req.body.image)) {
         const images = await Promise.all(req.body.image.map((v) => {
@@ -68,7 +57,7 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
         model: db.Image,
       }, {
         model: db.User,
-        as: 'Likers',
+        as: 'PostLikers',
         attributes: ['id'],
       }, {
         model: db.Comment,
@@ -104,8 +93,8 @@ router.get('/:id', async (req, res, next) => {
         model: db.Image,
       }, {
         model: db.User,
-        through: 'Like',
-        as: 'Likers',
+        through: 'PostLike',
+        as: 'PostLikers',
         attributes:['id']
       }, {
         model: db.Comment,

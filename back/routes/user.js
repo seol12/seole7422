@@ -50,11 +50,6 @@ router.get('/:id', async (req, res, next) => {
   try {
     const user = await db.User.findOne({
       where: { id: parseInt(req.params.id, 10) },
-      include: [{
-        model: db.Post,
-        as: 'Posts',
-        attributes: ['id'],
-      }],
       attributes: ['id', 'nickname'],
     });
     const jsonUser = user.toJSON();
@@ -92,11 +87,6 @@ router.post('/login', (req, res, next) => {
         }
         const fullUser = await db.User.findOne({
           where: { id: user.id },
-          include: [{
-            model: db.Post,
-            as: 'Posts',
-            attributes: ['id'],
-          }],
           attributes: ['id', 'nickname', 'userId'],
         });
         console.log(fullUser);
@@ -128,8 +118,8 @@ router.get('/:id/posts', async (req, res, next) => {
         model: db.Image,
       }, {
         model: db.User,
-        through: 'Like',
-        as: 'Likers',
+        through: 'PostLike',
+        as: 'PostLikers',
         attributes: ['id'],
       }, {
         model: db.Comment,
